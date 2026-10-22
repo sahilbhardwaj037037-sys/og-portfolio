@@ -1,0 +1,45 @@
+{
+  "algorithm": "SHA-256",
+  "assets": [
+    {
+      "path": "public/favicon.svg",
+      "bytes": 227,
+      "sha256": "a53c10cb3b7ffa3849a250355d28a882aa08394b78d8cff3baecdf414f771e84"
+    },
+    {
+      "path": "public/media/laptop-original.glb",
+      "bytes": 10847304,
+      "sha256": "27b217e9c49f767ebf5f5dc085252f3e25653b97d2a8235bfb354d2ecc917996"
+    },
+    {
+      "path": "public/media/laptop-poster-refined.png",
+      "bytes": 157918,
+      "sha256": "2c55c60ee3f034134ae58d858907b87a183d19493d24e1ed7e2f24c8560c5bc3"
+    },
+    {
+      "path": "public/media/laptop-poster.png",
+      "bytes": 292161,
+      "sha256": "8c34f443b4ce5cc10a449c3df259fd760964edcfe68565f700b6a5dd42e5f5ac"
+    },
+    {
+      "path": "public/media/sahil-screen-animation.mp4",
+      "bytes": 23462114,
+      "sha256": "86e0a07ec56e62942c072c47d0bddc5e1d1dd266fe0a72d1f39784818b30a785"
+    },
+    {
+      "path": "public/media/smile-admin.png",
+      "bytes": 193198,
+      "sha256": "1f80a339355404eb44a3f9acbe69005dd070b5203d1f1f061365c01f1bca77f8"
+    },
+    {
+      "path": "public/media/smile-desktop.png",
+      "bytes": 659239,
+      "sha256": "5c19defe165dba61e5624799db03f26dc20228df196aae61e44d6f4080369759"
+    },
+    {
+      "path": "public/media/smile-mobile.png",
+      "bytes": 210942,
+      "sha256": "e2c82d2008deccf568227c8da392b2733416021ef04f47afc29a6df979c5cc70"
+    }
+  ]
+}

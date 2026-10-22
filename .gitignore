@@ -1,0 +1,61 @@
+# Dependencies, builds, and generated caches
+node_modules/
+dist/
+coverage/
+.vite/
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+*.log
+npm-debug.log*
+
+# Local environment, credentials, and private tooling state
+.env
+.env.*
+!.env.example
+.npmrc
+.netrc
+.git-credentials
+.aws/
+.ssh/
+.codex/
+.agents/
+secrets/
+credentials*.json
+service-account*.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# OS, editors, and temporary files
+.DS_Store
+._*
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.tmp
+*.bak
+*~
+tmp/
+temp/
+
+# Retain regression scripts; generated QA evidence stays local.
+/qa/*
+!/qa/*.mjs
+# Historical asset-generation utility, not a regression test.
+/qa/initial-check.mjs
+playwright-report/
+test-results/
+recordings/
+*.webm
+
+# Historical local reports reference artifacts outside this repository.
+/PHASE-2-REPORT.md
+/VIDEO-INTEGRATION-REPORT.md
+
+# Runtime MP4, GLB, project images, and fallback posters are intentionally tracked.
