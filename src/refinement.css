@@ -60,6 +60,20 @@
 .project-gallery{padding-top:20px}
 .reduced .hero-type{transform:none}
 .reduced .entrance-word{transform:none!important}
+/* Static desktop storytelling reflows the space previously occupied by sticky media.
+   The has-depth presentation and the existing small-screen layout stay independent. */
+@media(min-width:1000px) and (min-height:700px){
+  .case-story:not(.has-depth){display:block;padding-top:0}
+  .case-story:not(.has-depth) .story-chapters{display:block}
+  .case-story:not(.has-depth) .story-chapter{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);grid-template-rows:auto auto auto 1fr;column-gap:7%;min-height:0;padding:56px 0;border-bottom:1px solid #d4d1ca;justify-content:normal}
+  .case-story:not(.has-depth) .story-chapter>.eyebrow{grid-column:1;grid-row:1;margin:0}
+  .case-story:not(.has-depth) .story-chapter h3{grid-column:1;grid-row:2;margin:25px 0 20px}
+  .case-story:not(.has-depth) .story-chapter>p:not(.eyebrow){grid-column:1;grid-row:3;max-width:360px;margin:0}
+  .case-story:not(.has-depth) .story-chapter>p.story-safeguard{grid-row:4;align-self:start;margin-top:20px}
+  .case-story:not(.has-depth) .chapter-image{grid-column:2;grid-row:1 / span 4;margin:0;align-self:start;min-width:0}
+  .case-story:not(.has-depth) .chapter-image-responsive img{max-width:300px;margin-inline:auto}
+  .case-story:not(.has-depth) .chapter-image-responsive figcaption{text-align:center}
+}
 @media(max-width:899px),(max-height:619px){.scene-failed .load-status{left:7.4%;right:auto;top:calc(250px + 29vw);bottom:auto}}
 @media(min-width:1600px){.hero-type-back{top:12%}.hero-type-front{top:73%}}
 @media(max-width:1199px){.hero-type-back{font-size:18vw;top:20%}.hero-type-front{font-size:7.5vw;top:73%}.hero-aside{display:none}.hero-copy{top:13%}.hero-intent>p{max-width:150px}.hero-intent{bottom:12%}.hero-intent .hero-cta{gap:18px}}

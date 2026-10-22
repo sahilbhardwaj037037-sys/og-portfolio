@@ -40,6 +40,11 @@
       "path": "public/media/smile-mobile.png",
       "bytes": 210942,
       "sha256": "e2c82d2008deccf568227c8da392b2733416021ef04f47afc29a6df979c5cc70"
+    },
+    {
+      "path": "public/media/hero-ambient.wav",
+      "bytes": 8640044,
+      "sha256": "3750340764638bf43f6583f46980faca68453d79da336632da43b8a0f7132716"
     }
   ]
 }

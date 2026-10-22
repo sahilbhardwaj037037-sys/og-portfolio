@@ -1,13 +1,16 @@
 # OG Portfolio
 
-**Under development · Phase 2.1 + Cinematic Video Integration**
+**Under development · Phase 2.2 approved checkpoint**
 
 A cinematic web developer portfolio by Sahil Bhardwaj, built around **BEYOND THE INTERFACE.** The Obsidian / Atelier direction pairs a graphite 3D laptop with an immersive typographic hero, then follows the screen into a warm ivory presentation of selected work.
 
-This checkpoint contains the approved Phase 2.1 prototype and completed laptop video integration. The first implemented case study is Smile Care Clinic. The broader portfolio remains in development; Phase 2.2 and Phase 3 have not started. This repository contains source code and runtime assets, with no deployment configured as part of this checkpoint.
+This branch extends the approved Phase 2.1 + Cinematic Video Integration checkpoint with the user-approved Phase 2.2 living environment, opt-in hero soundscape, and reduced-motion layout correction. See [the Phase 2.2 review](docs/PHASE-2.2-REVIEW.md) and [reduced-motion review](docs/REDUCED-MOTION-REVIEW.md). The first implemented case study is Smile Care Clinic. The broader portfolio remains in development; Phase 3 has not started. This repository contains source code and runtime assets, with no deployment configured as part of this checkpoint.
 
 ## Implemented experience
 
+- **Living studio:** a warm ivory / graphite environment starts at 50/50, follows horizontal pointer movement with restrained easing, and stays static on touch or reduced-motion devices.
+- **Hero soundscape:** the supplied Google Flow Music WAV is silent by default, loaded only after explicit activation, faded with hero presence, and suspended when hidden or offscreen. Runtime loop softening preserves the original file.
+- **Project themes:** reusable palettes register all four featured projects; only Smile Care has an implemented showcase.
 - **Hero:** BEYOND / THE INTERFACE typography, developer identity, entrance animation, and restrained depth response.
 - **Original 3D laptop:** supplied GLB, studio lighting, pointer interaction, and Apple-logo concealment applied at runtime. The original model file remains unchanged.
 - **Cinematic screen:** the supplied 29.5-second video plays on the original display mesh through Three.js `VideoTexture`, with matching UV orientation, sRGB color handling, and native source resolution.
@@ -42,7 +45,7 @@ npm ci
 npm run dev
 ```
 
-Open **http://127.0.0.1:5173/**. No environment variables or API keys are required. The default server binds to loopback on your computer.
+Open **http://127.0.0.1:5173/**. No environment variables or API keys are required. To use the Phase 2.2 review URL, run `npm run dev -- --port 5183` and open http://127.0.0.1:5183/. The default server binds to loopback on your computer.
 
 To build and inspect the production output locally:
 
@@ -60,10 +63,12 @@ Start `npm run preview` after building, then use a second terminal:
 ```sh
 OG_QA_URL=http://127.0.0.1:5174 npm run qa
 OG_QA_URL=http://127.0.0.1:5174 npm run qa:video
+OG_QA_URL=http://127.0.0.1:5183 npm run qa:phase22
 node qa/production-smoke.mjs
+OG_QA_URL=http://127.0.0.1:5183 node qa/reduced-layout-check.mjs
 ```
 
-The existing scripts expect Google Chrome at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. Playwright Core is installed by `npm ci`; it does not download a browser. Other operating systems need a matching installed-browser path in the QA launch configuration.
+The focused Phase 2.2 suite expects a running development preview on port 5183 (`npm run dev -- --port 5183`) because it also checks the exported loop/theme functions. The existing scripts expect Google Chrome at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. Playwright Core is installed by `npm ci`; it does not download a browser. Other operating systems need a matching installed-browser path in the QA launch configuration.
 
 The main regression suite checks the original laptop, logo concealment, pointer interaction, forward/reverse scrolling, screen/DOM alignment, resizing, responsive controls, motion settings, and WebGL/static fallbacks. The video suite checks playback, looping, visibility, fallbacks, reversible blending, texture uploads, and paired performance measurements. The smoke test targets port 5174.
 
@@ -78,6 +83,11 @@ src/
   main.tsx             Page structure, gallery, and hero scroll timeline
   scene.tsx            Original laptop, screen material, camera, and logo concealment
   screenVideo.ts       Video lifecycle, visibility, playback, and cleanup
+  useLivingEnvironment.ts  Pointer-driven studio boundary
+  HeroSound.tsx        Accessible sound toggle and hero presence
+  heroAudio.ts         Lazy audio loading, runtime looping, fades, and suspension
+  projectThemes.ts     Typed palettes and scoped theme tokens
+  environment.css      Living studio, contrast treatments, and theme styling
   SmileCareStory.tsx   Case-study scroll presentation
   *.css                Typography, layout, and responsive styling
 public/
@@ -101,15 +111,15 @@ This repository root corresponds to the local `prototype` directory. Discovery r
 
 ## Planned roadmap
 
-- **Phase 2.2 — pending separate approval:** define the next refinement scope after reviewing this checkpoint. No Phase 2.2 implementation is included.
+- **Phase 2.2 — completed and visually approved:** living environment, hero soundscape, project-theme foundations, and balanced reduced-motion storytelling. Recorded on `feature/phase-2.2-living-environment`; merging and deployment remain separate decisions.
 - Expand the approved portfolio story with the remaining selected projects, showreel, skills presentation, archive, and closing contact experience.
 - Complete physical-device and cross-browser testing, accessibility review, and production asset-delivery optimization.
 - Plan production release and hosting separately. No release date or deployment is implied by this checkpoint.
 
 ## Assets and repository policy
 
-The cinematic MP4 is **22.38 MiB** and the original GLB is **10.34 MiB**. Both are included unchanged as regular Git files; Git LFS is not required for their current sizes. Their checksums are recorded in [asset-integrity.json](docs/asset-integrity.json). Project screenshots and fallback posters are included so a fresh clone can run the complete current prototype.
+The cinematic MP4 is **22.38 MiB** and the original GLB is **10.34 MiB**. The hero soundtrack is an additional unchanged 8.24 MiB WAV. All three are regular Git assets; Git LFS is not required for their current sizes. Their checksums are recorded in [asset-integrity.json](docs/asset-integrity.json). Project screenshots and fallback posters are included so a fresh clone can run the complete current prototype.
 
 Dependencies, generated builds, caches, temporary files, local tooling state, secrets, and generated QA evidence are excluded. Keep future media changes deliberate: replacing large binaries repeatedly grows Git history.
 
-Font notices are retained in `licenses/`. This checkpoint does not grant a new license to the portfolio source or supplied project/model/video assets. Third-party assets remain subject to their respective terms.
+Font notices are retained in `licenses/`. Soundtrack provenance and verified terms links are recorded in [licenses/hero-ambient.txt](licenses/hero-ambient.txt); no blanket music license is asserted. This checkpoint does not grant a new license to the portfolio source or supplied project/model/video assets. Third-party assets remain subject to their respective terms.

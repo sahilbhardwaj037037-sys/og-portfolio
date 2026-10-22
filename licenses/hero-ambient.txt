@@ -1,0 +1,32 @@
+Hero ambient soundtrack — provenance record, not a new license grant
+
+File: public/media/hero-ambient.wav
+Source: Google Flow Music, as identified by Sahil Bhardwaj, who manually
+supplied and explicitly approved this exact file for the portfolio.
+Recorded: October 22, 2026
+SHA-256: 3750340764638bf43f6583f46980faca68453d79da336632da43b8a0f7132716
+Format: WAV, signed 24-bit PCM, 48,000 Hz, stereo, 30 seconds, 8,640,044 bytes.
+
+Verified public sources (accessed October 22, 2026):
+
+1. Google Flow Music's public site links its Terms of Service to
+   https://flowmusic.app/terms, which redirects to Google's general terms:
+   https://policies.google.com/terms
+   Google states that it does not claim ownership of original content
+   generated through applicable services. The terms also require respecting
+   third-party rights and following applicable service-specific terms.
+
+2. Google's Flow Music announcement specifically states that Google does
+   not claim ownership of original content generated with Flow Music:
+   https://blog.google/innovation-and-ai/models-and-research/google-labs/believe-flow-music-partnership/
+
+These statements are not an open-source, Creative Commons, or blanket
+royalty-free license. This project does not invent or grant such a license.
+The track's generation date, account plan, prompt, generation/export record,
+and account-specific terms were not supplied or independently verified.
+No assertion of exclusive copyright, unrestricted commercial rights, or
+third-party clearance is made. Terms can vary by region and account.
+
+The supplied WAV is preserved byte-for-byte. Playback applies a 600 ms
+raised-cosine end/start overlap only to an in-memory decoded buffer; it does
+not overwrite, trim, or re-encode the source file. No other track is used.

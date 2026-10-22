@@ -7,6 +7,10 @@ import './styles.css';
 import './refinement.css';
 import SmileCareStory from './SmileCareStory';
 import type { SceneHandle } from './scene';
+import HeroSound from './HeroSound';
+import { useLivingEnvironment, type EnvironmentPaint } from './useLivingEnvironment';
+import { projectThemeStyle } from './projectThemes';
+import './environment.css';
 
 gsap.registerPlugin(ScrollTrigger);
 const Laptop = lazy(() => import('./scene'));
@@ -39,6 +43,9 @@ function App() {
   const [imageError, setImageError] = useState(false);
   const [interactiveMobile, setInteractiveMobile] = useState(false);
   const cinematic = useRef(false);
+  const environment = useRef<EnvironmentPaint>(() => {});
+  const soundPresence = useRef<(value: number, immediate?: boolean) => void>(() => {});
+  useLivingEnvironment(root, stage, reduce, environment);
 
   useEffect(() => {
     const mq = matchMedia('(prefers-reduced-motion: reduce)');
@@ -52,6 +59,9 @@ function App() {
     const el = overlay.current;
     if (!el || !stage.current) return;
     const p = progress.current;
+    environment.current(p, cinematic.current);
+    const soundT = gsap.utils.clamp(0, 1, (p - .12) / .24);
+    soundPresence.current(cinematic.current ? 1 - soundT * soundT * (3 - 2 * soundT) : 1, cinematic.current && p >= .74);
     stage.current.style.setProperty('--depth-x', `${scene.current?.depthX||0}px`);
     const width = stage.current.clientWidth, height = stage.current.clientHeight;
     const active = cinematic.current;
@@ -97,12 +107,12 @@ function App() {
             stage.current!.style.setProperty('--case', `${gsap.utils.clamp(0, 1, (visual.value - .88) / .12)}`);
             stage.current!.style.setProperty('--device', `${1 - gsap.utils.clamp(0, 1, (visual.value - .82) / .045)}`);
             const hideIdentity = visual.value > .37;
-            stage.current!.querySelectorAll<HTMLElement>('.hero-copy, .hero-intent, .hero-footnote').forEach(el => {el.inert = hideIdentity;});
+            stage.current!.querySelectorAll<HTMLElement>('.hero-copy, .hero-intent, .hero-footnote, .hero-sound').forEach(el => {el.inert = hideIdentity;});
             wake.current(); paintOverlay();
           } });
         } else {
           root.current!.style.setProperty('--journey', '0');
-          stage.current!.querySelectorAll<HTMLElement>('.hero-copy, .hero-intent, .hero-footnote').forEach(el => {el.inert = false;});
+          stage.current!.querySelectorAll<HTMLElement>('.hero-copy, .hero-intent, .hero-footnote, .hero-sound').forEach(el => {el.inert = false;});
           stage.current!.style.setProperty('--paper', '0');
           stage.current!.style.setProperty('--identity', '1');
           stage.current!.style.setProperty('--case', '0');
@@ -157,7 +167,7 @@ function App() {
     history.replaceState(null, '', '#work');
   }
 
-  return <div ref={root} className={`portfolio ${reduce ? 'reduced' : ''} ${failure ? 'scene-failed' : ''}`}>
+  return <div ref={root} style={projectThemeStyle('smile-care')} className={`portfolio ${reduce ? 'reduced' : ''} ${failure ? 'scene-failed' : ''}`}>
     <a className="skip-link" href="#work" onClick={skip}>Skip to selected work</a>
     <header className="site-header">
       <a className="signature" href="#intro" aria-label="Sahil Bhardwaj, back to introduction">SB<span>/</span></a>
@@ -167,6 +177,7 @@ function App() {
     <main>
       <section id="intro" ref={journey} className="journey" aria-labelledby="hero-heading">
         <div className="hero-stage" ref={stage}>
+          <div className="studio-backdrop" aria-hidden="true"><div className="studio-light"/><div className="studio-atmosphere"/><div className="studio-grain"/></div>
           <div className="stage-paper" />
           <div className="hero-orbit orbit-one" aria-hidden="true" /><div className="hero-orbit orbit-two" aria-hidden="true" />
           <div className="hero-type hero-type-back" aria-hidden="true"><span className="entrance-word">BEYOND</span></div>
@@ -184,13 +195,14 @@ function App() {
           {!ready && !failure && <p className="load-status" role="status">Preparing the studio<span>…</span></p>}
           {failure && <p className="load-status">Static studio view</p>}
           <button className="mobile-interaction" onClick={() => setInteractiveMobile(!interactiveMobile)} aria-pressed={interactiveMobile}>{interactiveMobile ? 'Pause movement' : 'Explore the laptop'} <Arrow diagonal /></button>
+          <HeroSound presence={soundPresence}/>
           <div className="hero-footnote"><p>FRONTEND <span>/</span> WORDPRESS <span>/</span> SHOPIFY</p><a href="#work" onClick={skip}><span className="scroll-line" /> SCROLL TO ENTER THE WORK <Arrow /></a><p className="hero-index">01 <span>—</span> 02</p></div>
           <div className="handoff-heading" aria-hidden="true"><p className="eyebrow">01 / SELECTED WORK <span>WORDPRESS DEVELOPMENT</span></p><h2>Smile Care Clinic</h2></div>
           <div className="display-overlay" ref={overlay} aria-hidden="true"><img src="/media/smile-desktop.png" alt="" /></div>
           <div className="handoff-caption" aria-hidden="true"><span>A CALMER INTERFACE. A CUSTOM FOUNDATION.</span><span>PRACTICE PROJECT / 2026</span></div>
         </div>
       </section>
-      <section id="work" className="project" tabIndex={-1} aria-labelledby="project-title">
+      <section id="work" className="project" data-project-theme="smile-care" tabIndex={-1} aria-labelledby="project-title">
         <div className="project-intro"><p className="eyebrow">SELECTED WORK / 01</p><div><h2 id="project-title">A calmer interface.<br /><span>A custom foundation.</span></h2><p>A dental clinic concept that brings considered frontend design together with a custom WordPress plugin and native Gutenberg blocks.</p></div><div className="project-spec"><span>SMILE CARE CLINIC</span><p>WordPress · PHP<br />Gutenberg · JavaScript</p><span className="practice-label">Practice project</span></div></div>
         <SmileCareStory reduced={reduce}/>
         <div className="capture-heading"><p className="eyebrow">THE EVIDENCE / INSPECT THE CAPTURES</p><p>Original views. Your own pace.</p></div>

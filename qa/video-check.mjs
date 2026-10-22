@@ -64,8 +64,15 @@ try{
  await page.evaluate(()=>{delete document.hidden;document.dispatchEvent(new Event('visibilitychange'))});await pause(page,400);assert.equal((await data(page)).video.paused,false);pass('Document visibility handler pauses/resumes (hidden property simulation)');
  await page.setViewportSize({width:1440,height:900});await at(page,.79);await page.setViewportSize({width:1280,height:800});d=await at(page,.79);assert.ok(Math.max(...['x','y','width','height'].map(k=>Math.abs(d.overlay[k]-d.screen[k])))<.05);await at(page,0);assert.equal((await data(page)).video.paused,false);pass('Resize during handoff and tablet/desktop crossings preserve alignment and playback');
  // Observe the native loop across its actual endpoint and retain genuine screenshots.
- await page.evaluate(()=>{window.__loopTimes=[];const v=__screenVideo;const tick=()=>{window.__loopTimes.push({time:v.currentTime,ready:v.readyState,now:performance.now()});if(window.__loopTimes.length<150)v.requestVideoFrameCallback(tick)};v.requestVideoFrameCallback(tick);v.currentTime=v.duration-1.3});
- await pause(page,2400);const loop=await page.evaluate(()=>window.__loopTimes);const wrapped=loop.findIndex((x,i)=>i>0&&x.time<loop[i-1].time-1);assert.ok(wrapped>0);assert.ok(loop.every(x=>x.ready>=2));pass('Native loop crosses 29.5s endpoint without an unready texture',{samples:loop.length,before:loop[wrapped-1],after:loop[wrapped],presentedGapMs:loop[wrapped].now-loop[wrapped-1].now});
+ await page.evaluate(()=>{__screenVideo.currentTime=__screenVideo.duration-1.3});
+ await page.waitForFunction(()=>!__screenVideo.seeking&&__screenVideo.readyState>=2&&__screenVideo.currentTime>__screenVideo.duration-1.5);
+ await page.evaluate(()=>{window.__loopTimes=[];const v=__screenVideo;const tick=(_now,metadata)=>{window.__loopTimes.push({time:metadata.mediaTime,playhead:v.currentTime,ready:v.readyState,now:performance.now(),width:metadata.width,height:metadata.height});if(window.__loopTimes.length<150)v.requestVideoFrameCallback(tick)};v.requestVideoFrameCallback(tick)});
+ await page.waitForFunction(()=>window.__loopTimes.some((x,i,a)=>i>0&&x.time<a[i-1].time-1),{},{timeout:10000});await pause(page,200);
+ const loop=await page.evaluate(()=>window.__loopTimes);const wrapped=loop.findIndex((x,i)=>i>0&&x.time<loop[i-1].time-1);assert.ok(wrapped>0);
+ // A callback may present the final decoded frame after HTMLMediaElement has
+ // already reset its playhead/readiness. Inspect the presented frame itself.
+ assert.ok(loop.every(x=>x.width===2750&&x.height===1788));const gap=loop[wrapped].now-loop[wrapped-1].now;assert.ok(gap<150,`Native loop presentation gap ${gap}ms`);
+ pass('Native loop presents source-resolution frames across the 29.5s endpoint',{samples:loop.length,before:loop[wrapped-1],after:loop[wrapped],presentedGapMs:gap});
  await context.close();
  for(const mode of ['unsupported','blocked','reduced']){
   const item=await create(mode==='reduced'?{reducedMotion:'reduce'}:{},mode);await pause(item.page,900);const v=await data(item.page);assert.equal(v.videoBlend,0);assert.equal(v.video.paused,true);assert.equal(v.failed,false);if(mode==='reduced')assert.equal(v.video.width,0);else assert.equal(v.video.failed,mode==='blocked'?'autoplay-blocked':'unsupported-codec');await shot(item.page,`fallback-${mode}`);pass(`${mode}: static canvas fallback retains 3D scene`,v.video);await item.context.close();
