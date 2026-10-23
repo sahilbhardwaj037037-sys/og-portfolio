@@ -40,3 +40,27 @@ export const emberOak = {
   ],
 } as const;
 export const emberImage = (index: number) => `/media/ember-oak/${emberOak.images[index].file}`;
+
+// Genuine 20 October development captures; image commit is not the capture-time app state.
+export const clientScout = {
+  id: 'clientscout-ai',
+  repository: 'https://github.com/sahilbhardwaj037037-sys/clientscout-ai',
+  development: 'https://github.com/sahilbhardwaj037037-sys/clientscout-ai/tree/feature/checkpoint-5',
+  revision: '8ceb24402d5518fc532fc5b32d848edbc9040538',
+  captured: '20 October 2026',
+  exit: { id: 'clientscout-closing', next: null },
+  images: [
+    { file: "portfolio-dashboard-desktop-light.jpg", label: "Light dashboard", width: 1440, height: 1758, alt: "ClientScout AI light dashboard with a disabled discovery source and eight synthetic Demo leads; development snapshot" },
+    { file: "portfolio-dashboard-desktop-dark.jpg", label: "Dark dashboard", width: 1440, height: 1758, alt: "The same synthetic ClientScout dashboard in its coffee dark theme" },
+    { file: "portfolio-leads-desktop.jpg", label: "Saved leads", width: 1440, height: 1667, alt: "Saved Leads view with search, status filters and eight fictional Demo businesses on example domains" },
+    { file: "portfolio-lead-detail-desktop.jpg", label: "Lead detail", width: 1440, height: 1000, alt: "Demo Cedar Studio lead detail showing its example domain, status and evidence entry points" },
+    { file: "portfolio-import-desktop.jpg", label: "CSV import", width: 1128, height: 367, alt: "Original CSV import component capture with accepted headers and bounded import guidance" },
+    { file: "portfolio-discovery-desktop.jpg", label: "Discovery setup", width: 1128, height: 529, alt: "Original discovery component capture with disabled OpenStreetMap Overpass source and attribution" },
+    { file: "portfolio-audit-desktop.jpg", label: "Audit setup", width: 1440, height: 1127, alt: "Website Audit permission controls and empty audit history; no successful audit results are shown" },
+    { file: "portfolio-assessment-desktop.jpg", label: "Unknown-state assessment", width: 1440, height: 2257, alt: "Actual assessment of the synthetic Demo Cedar Studio lead with unknown components, zero evidence coverage and empty contact fields" },
+    { file: "portfolio-dashboard-tablet.jpg", label: "Tablet workspace", width: 768, height: 1024, alt: "Genuine 768-pixel tablet dashboard showing the responsive workspace" },
+    { file: "portfolio-dashboard-mobile.jpg", label: "Mobile workspace", width: 390, height: 844, alt: "Genuine 390-pixel mobile dashboard opening with stacked discovery controls" },
+    { file: "portfolio-navigation-mobile.jpg", label: "Navigation drawer", width: 390, height: 844, alt: "Genuine 390-pixel mobile navigation drawer with workspace destinations" },
+  ],
+} as const;
+export const scoutImage = (index: number) => `/media/clientscout/${clientScout.images[index].file}`;

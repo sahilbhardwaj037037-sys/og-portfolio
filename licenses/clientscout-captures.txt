@@ -1,0 +1,51 @@
+ClientScout AI screenshot provenance — no new license grant
+
+Repository: https://github.com/sahilbhardwaj037037-sys/clientscout-ai
+Published development branch: feature/checkpoint-5
+Inspected image/documentation revision:
+8ceb24402d5518fc532fc5b32d848edbc9040538
+Original source paths: docs/screenshots/portfolio-*.jpg
+Development snapshot: 20 October 2026, as documented in the source README.
+
+The user approved eleven unchanged JPEGs selected in Phase 3D.1:
+portfolio-dashboard-desktop-light.jpg, portfolio-dashboard-desktop-dark.jpg,
+portfolio-leads-desktop.jpg, portfolio-lead-detail-desktop.jpg,
+portfolio-import-desktop.jpg, portfolio-discovery-desktop.jpg,
+portfolio-audit-desktop.jpg, portfolio-assessment-desktop.jpg,
+portfolio-dashboard-tablet.jpg, portfolio-dashboard-mobile.jpg,
+portfolio-navigation-mobile.jpg.
+
+Total: 1,213,244 bytes. Every file matches its committed Git blob and
+SHA-256. Checksums/byte sizes are in docs/asset-integrity.json; dimensions,
+source URLs and individual qualifications are in
+docs/phase3d-asset-inventory.json.
+
+These images were committed in 8ceb244, but the documented capture
+application was a local working tree containing pending 5.2 changes.
+They are not clean-checkout 5.1 screenshots or production-deployment
+proof. The exact full capture-time working-tree hash was not supplied.
+
+The source README documents a separate temporary database with eight
+fictional Demo records on reserved .example domains, providers disabled,
+blocked outbound requests and no copied real lead/profile/contact data.
+The portfolio does not connect to a ClientScout backend, database,
+profile, provider or real prospect. Captured counts/statuses are demo
+records, not business outcomes. Unknown/disabled/empty states are retained.
+
+The approved desktop passage displays a clearly labeled upper-viewport
+excerpt of the unchanged full dashboard. The gallery and static modes
+provide the full original. Other screenshot contents are not altered,
+retouched, stretched, recolored or re-encoded. Discovery/import images
+are original component captures and are identified as such.
+
+The eight older PNGs and newer Research/Settings reserves are excluded.
+No Proposal Studio output, completed audit or detailed 5.2 research
+result is substituted or fabricated. Such visual extensions need newly
+verified sanitized captures and separate approval.
+
+No public live demo or live-provider/AI acceptance is established.
+The inspected repository has no declared project license; public GitHub
+availability is not a license grant. This record invents no blanket
+code/screenshot reuse rights. Third-party assets and optional provider
+obligations remain applicable. Visible OpenStreetMap attribution and
+ODbL notices are retained within genuine captures.

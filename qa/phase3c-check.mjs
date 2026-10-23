@@ -20,9 +20,9 @@ async function fit(p){assert.equal(await p.evaluate(()=>document.documentElement
 const shot=(p,name)=>p.screenshot({path:`${out}/${name}.png`});
 try{
  const {page,context}=await create();
- assert.equal(await page.locator('canvas').count(),1);assert.equal(await page.locator('[data-project-theme="clientscout-ai"]').count(),0);
+ assert.equal(await page.locator('canvas').count(),1);assert.equal(await page.locator('[data-project-theme="clientscout-ai"]').count(),1);
  assert.deepEqual(await page.evaluate(()=>performance.getEntriesByType('resource').filter(e=>e.name.includes('/media/ember-oak/')).map(e=>e.name)),[]);
- pass('One original canvas, no ClientScout and no initial-hero Ember image transfers');
+ pass('One original canvas, the approved fourth showcase and no initial-hero Ember image transfers');
  const poses={};for(const n of [0,.25,.5,.75,1]){poses[n]=await at(page,n);report.poses.push(poses[n]);await shot(page,`passage-${n}`)}
  assert.equal(poses[.5].depth,true);assert.ok(poses[.5].productZ<poses[.5].editorialZ-100);assert.ok(poses[.5].incomingZ< -100);assert.ok(Math.abs(poses[.5].worldX)>80);assert.ok(Math.abs(poses[1].incomingZ)<.01&&Math.abs(poses[1].incomingRotationY)<.01);
  await at(page,.5);const matrix=await page.locator('.ember-arriving').evaluate(el=>{const m=new DOMMatrix(getComputedStyle(el).transform);return {z:m.m43,rotation:m.m13,world:getComputedStyle(document.querySelector('.ember-world')).transformStyle,perspective:getComputedStyle(document.querySelector('.ember-camera')).perspective}});assert.ok(matrix.z< -100&&Math.abs(matrix.rotation)>.04);assert.equal(matrix.world,'preserve-3d');assert.equal(matrix.perspective,'1600px');assert.equal(await page.locator('.ember-passage-plane').count(),3);pass('Real CSS depth separates commerce layers and laterally reveals a frontal restaurant arrival',matrix);

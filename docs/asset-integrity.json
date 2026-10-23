@@ -125,6 +125,61 @@
       "path": "public/media/ember-oak/tablet-homepage.jpg",
       "bytes": 58423,
       "sha256": "83313a371be3eb626a4d7aece921f9837062d5b5c97d7d01cc6da0a993e080fe"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-assessment-desktop.jpg",
+      "bytes": 243690,
+      "sha256": "d3887892ddf4b93ab6518f0209791e4ed995f753e23f1a79f2874791d0e6d2b0"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-audit-desktop.jpg",
+      "bytes": 100285,
+      "sha256": "598da797510df4cf91c8a7acd3f55633414eb4be00ce72c35700e4706b3a3640"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-dashboard-desktop-dark.jpg",
+      "bytes": 183995,
+      "sha256": "3363fcb382d4e60a336ec1499e40ceba766b1276e391050cb82356fadfe6ace8"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-dashboard-desktop-light.jpg",
+      "bytes": 181137,
+      "sha256": "32faeed646b795092ea06e08d928f62a6d22587d37f3019e182da113ac614474"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-dashboard-mobile.jpg",
+      "bytes": 42320,
+      "sha256": "64211be8315af70ff79fa84fbd0f8572efd200e84d0d5037ae93f33c8dbf57be"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-dashboard-tablet.jpg",
+      "bytes": 88753,
+      "sha256": "7c35d9fd7e8e989cb6f45db3762f0939dbc2148cf64b0df868ebb5e16857bc50"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-discovery-desktop.jpg",
+      "bytes": 71671,
+      "sha256": "982ce2097883ba942417cbda41c938ffa3328444a51826547192007ee8bec76b"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-import-desktop.jpg",
+      "bytes": 37319,
+      "sha256": "054c0523f812fdc9adda499459b646325f0e52b87d518c82ba54740704ea2c40"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-lead-detail-desktop.jpg",
+      "bytes": 91347,
+      "sha256": "71946a3b66031cbdd51c23b0f06e197e24fd51fea4a696669d0a697e44251f02"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-leads-desktop.jpg",
+      "bytes": 149004,
+      "sha256": "38d75f2136e0943de5931172596d0010035a0851adcc7b1db1e5a388594606ec"
+    },
+    {
+      "path": "public/media/clientscout/portfolio-navigation-mobile.jpg",
+      "bytes": 23723,
+      "sha256": "77463c5907802accb5c281717dcab1eba74dd83673cbf3cfdd77833c723f7c15"
     }
   ]
 }
