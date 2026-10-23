@@ -1,0 +1,38 @@
+Ember & Oak screenshot provenance — no new license grant
+
+Project: Ember-Oak, a fictional restaurant website concept.
+Source: https://github.com/sahilbhardwaj037037-sys/Ember-Oak
+Inspected revision: bf30d00a95273e9177f06fef3da0b9415467de24
+Original paths: docs/screenshots/*.jpg
+Inspection and user approval: 23 October 2026.
+An exact screenshot capture date is not asserted.
+
+The user approved ten bounded original captures for the portfolio:
+desktop-hero.jpg, desktop-gallery.jpg, desktop-menu.jpg,
+desktop-reservation.jpg, tablet-homepage.jpg, mobile-homepage.jpg,
+mobile-menu.jpg, mobile-navigation.jpg, mobile-reservation.jpg,
+mobile-320-homepage.jpg.
+
+They are copied unchanged to public/media/ember-oak/, without cropping,
+retouching, recoloring or re-encoding the files. CSS frames the original
+screenshots. Combined size: 605,383 bytes. SHA-256 values and byte sizes
+are recorded in docs/asset-integrity.json. They also match the inspected
+source Git blobs. Source dimensions and discovery records remain in
+docs/phase3a-asset-inventory.json.
+
+The original desktop-full-homepage.jpg (1440x8333, 876,953 bytes) stays
+linked in the source repository; it is not copied into runtime media or
+loaded as a portfolio image/texture.
+
+The restaurant, founders, reviews, menu/prices and contact details are
+concept content. The source reservation interface has client-side
+validation and a Formspree action. Delivery, endpoint ownership,
+availability and booking confirmation have not been verified. No form
+was submitted for this implementation.
+
+The source repository contains no LICENSE file. Its README says that
+photographer identities, original sources and image terms are not
+documented; the website footer states All rights reserved. This record
+does not establish permissions or grant an open-source, stock-photo,
+Creative Commons or blanket third-party image license. Underlying
+photographs are not extracted or independently republished by this work.

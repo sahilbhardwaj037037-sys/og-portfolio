@@ -17,3 +17,26 @@ export const sixSeven = {
   ],
 } as const;
 export const sixImage = (index: number) => `/media/six7/${sixSeven.images[index].file}`;
+
+// Original bounded captures from the fictional restaurant frontend, unchanged.
+export const emberOak = {
+  id: 'ember-and-oak',
+  repository: 'https://github.com/sahilbhardwaj037037-sys/Ember-Oak',
+  demo: 'https://sahilbhardwaj037037-sys.github.io/Ember-Oak/',
+  revision: 'bf30d00a95273e9177f06fef3da0b9415467de24',
+  fullCapture: 'https://github.com/sahilbhardwaj037037-sys/Ember-Oak/blob/bf30d00a95273e9177f06fef3da0b9415467de24/docs/screenshots/desktop-full-homepage.jpg',
+  exit: { id: 'ember-closing', next: null },
+  images: [
+    { id: 'hero', label: 'Desktop opening', file: 'desktop-hero.jpg', width: 1440, height: 900, alt: 'Original Ember & Oak concept homepage, with Where Fire Meets Flavor serif heading over food photography' },
+    { id: 'atmosphere', label: 'Desktop gallery', file: 'desktop-gallery.jpg', width: 1440, height: 923, alt: 'Original restaurant concept gallery with an asymmetric arrangement of interiors, food and terrace photographs' },
+    { id: 'menu', label: 'Desktop menu', file: 'desktop-menu.jpg', width: 1440, height: 959, alt: 'Ember & Oak desktop Mains menu with four category controls and illustrative dish descriptions and prices' },
+    { id: 'request', label: 'Desktop request form', file: 'desktop-reservation.jpg', width: 1440, height: 814, alt: 'Original desktop reservation-request interface with labeled fields; delivery and bookings are unverified' },
+    { id: 'tablet', label: 'Tablet opening', file: 'tablet-homepage.jpg', width: 768, height: 1024, alt: 'Genuine 768-pixel tablet homepage with collapsed navigation and centered restaurant concept heading' },
+    { id: 'mobile', label: 'Mobile opening', file: 'mobile-homepage.jpg', width: 390, height: 844, alt: 'Genuine 390-pixel mobile restaurant homepage with vertically arranged calls to action' },
+    { id: 'mobile-menu', label: 'Mobile menu', file: 'mobile-menu.jpg', width: 390, height: 1070, alt: 'Original mobile Mains menu showing wrapped descriptions and illustrative prices' },
+    { id: 'navigation', label: 'Mobile navigation', file: 'mobile-navigation.jpg', width: 390, height: 844, alt: 'Expanded mobile navigation from the restaurant concept with visible section links' },
+    { id: 'mobile-request', label: 'Mobile request form', file: 'mobile-reservation.jpg', width: 390, height: 1059, alt: 'Original mobile reservation-request interface with stacked labeled fields; no verified booking service' },
+    { id: 'compact', label: '320px opening', file: 'mobile-320-homepage.jpg', width: 320, height: 844, alt: 'Original compact 320-pixel Ember & Oak concept homepage' },
+  ],
+} as const;
+export const emberImage = (index: number) => `/media/ember-oak/${emberOak.images[index].file}`;

@@ -23,8 +23,8 @@ const shot=(page,name)=>page.screenshot({path:`${out}/${name}.png`});
 async function fit(page){assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);}
 try{
  const {context,page}=await create();
- assert.equal(await page.locator('canvas').count(),1);assert.equal(await page.locator('[data-project-theme="ember-and-oak"],[data-project-theme="clientscout-ai"]').count(),0);
- const initial=await page.evaluate(()=>performance.getEntriesByType('resource').filter(e=>e.name.includes('/media/six7/')).map(e=>e.name));assert.equal(initial.length,0);pass('Hero starts without SIX&7 image transfers; one original canvas and no future showcases');
+ assert.equal(await page.locator('canvas').count(),1);assert.equal(await page.locator('[data-project-theme="clientscout-ai"]').count(),0);
+ const initial=await page.evaluate(()=>performance.getEntriesByType('resource').filter(e=>e.name.includes('/media/six7/')).map(e=>e.name));assert.equal(initial.length,0);pass('Hero starts without SIX&7 image transfers; one original canvas and no ClientScout showcase');
  const forward={};
  for(const p of [0,.25,.5,.75,1]){forward[p]=await at(page,p);report.poses.push(forward[p]);await shot(page,`passage-${p}`);}
  assert.equal(forward[.5].depth,true);assert.ok(forward[.5].incomingZ< -100&&forward[.5].outgoingZ< -100);assert.ok(Math.abs(forward[1].incomingZ)<.01);assert.ok(Math.abs(forward[1].incomingRotationY)<.01);

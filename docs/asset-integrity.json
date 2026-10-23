@@ -75,6 +75,56 @@
       "path": "public/media/six7/mobile-product.webp",
       "bytes": 18428,
       "sha256": "ffe51c5b47248fb2d634150cac1303420a947ad5723b5ef3f3d063e23c6c4530"
+    },
+    {
+      "path": "public/media/ember-oak/desktop-gallery.jpg",
+      "bytes": 205837,
+      "sha256": "4a7039197ad776108f6abe73b0a71d1d23461b52bbcd82a539a8b6b9ec25ac8f"
+    },
+    {
+      "path": "public/media/ember-oak/desktop-hero.jpg",
+      "bytes": 87819,
+      "sha256": "cda430d8e27ffcc83fa4f8fdafebc2276c178c63979217d97da7adec0b926803"
+    },
+    {
+      "path": "public/media/ember-oak/desktop-menu.jpg",
+      "bytes": 56595,
+      "sha256": "f1e46e2b9f84b268cfd92a0c7d0e0f02d6eff84cfeca6337daf83d13ff43152e"
+    },
+    {
+      "path": "public/media/ember-oak/desktop-reservation.jpg",
+      "bytes": 38099,
+      "sha256": "db26eb959003dfc8bafef1723b3fd7f3bed254356d1994a9684e9de8c3970e4f"
+    },
+    {
+      "path": "public/media/ember-oak/mobile-320-homepage.jpg",
+      "bytes": 33796,
+      "sha256": "c920dbe25f0588a3ea686cf7c38789680170e95226dda83abfe3b9a1fdbfdcd3"
+    },
+    {
+      "path": "public/media/ember-oak/mobile-homepage.jpg",
+      "bytes": 37565,
+      "sha256": "c88f1c879a0e74385c58c9624036bbd4865dc65c61194d519b4baa1bf1caa540"
+    },
+    {
+      "path": "public/media/ember-oak/mobile-menu.jpg",
+      "bytes": 33039,
+      "sha256": "c188efbeb1ab9591b7beeef95076ac2f38ec8bf097db2229372f3b201e6cd374"
+    },
+    {
+      "path": "public/media/ember-oak/mobile-navigation.jpg",
+      "bytes": 23535,
+      "sha256": "40c5d5dc974dcbac31a2a4a788869d3cb47a4d7b9c688823e6b66128ddee3062"
+    },
+    {
+      "path": "public/media/ember-oak/mobile-reservation.jpg",
+      "bytes": 30675,
+      "sha256": "6057216db6586e4d79d4958cb64023c4a2e1a5f3d26c8ad398843f1d6d3905b7"
+    },
+    {
+      "path": "public/media/ember-oak/tablet-homepage.jpg",
+      "bytes": 58423,
+      "sha256": "83313a371be3eb626a4d7aece921f9837062d5b5c97d7d01cc6da0a993e080fe"
     }
   ]
 }

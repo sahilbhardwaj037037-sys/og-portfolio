@@ -1,18 +1,19 @@
 # OG Portfolio
 
-**Under development · Phase 3B approved checkpoint**
+**Under development · Phase 3C approved checkpoint**
 
 A cinematic web developer portfolio by Sahil Bhardwaj, built around **BEYOND THE INTERFACE.** The Obsidian / Atelier direction pairs a graphite 3D laptop with an immersive typographic hero, then follows the screen into a warm ivory presentation of selected work.
 
-This branch extends the approved Phase 2.2 checkpoint with Phase 3B: a reversible CSS 3D passage from Smile Care into a complete SIX&7 Shopify practice-project showcase. See [the Phase 3B review](docs/PHASE-3B-REVIEW.md), [approved discovery plan](docs/PHASE-3A-DISCOVERY-PLAN.md), [Phase 2.2 review](docs/PHASE-2.2-REVIEW.md) and [reduced-motion correction](docs/REDUCED-MOTION-REVIEW.md). Phase 3B has been visually approved and is included in this feature-branch checkpoint. Ember & Oak, ClientScout AI and the commercial reel are not implemented. This repository contains source code and runtime assets, with no deployment configured.
+This branch extends the approved Phase 2.2 checkpoint with Phase 3B: a reversible CSS 3D passage from Smile Care into a complete SIX&7 Shopify practice-project showcase. See [the Phase 3B review](docs/PHASE-3B-REVIEW.md), [approved discovery plan](docs/PHASE-3A-DISCOVERY-PLAN.md), [Phase 2.2 review](docs/PHASE-2.2-REVIEW.md) and [reduced-motion correction](docs/REDUCED-MOTION-REVIEW.md). Phase 3B has been visually approved and committed. Phase 3C adds the visually approved Ember & Oak concept; see [the Phase 3C review](docs/PHASE-3C-REVIEW.md). ClientScout AI and the commercial reel are not implemented. This repository contains source code and runtime assets, with no deployment configured.
 
 ## Implemented experience
 
 - **Living studio:** a warm ivory / graphite environment starts at 50/50, follows horizontal pointer movement with restrained easing, and stays static on touch or reduced-motion devices.
 - **Hero soundscape:** the supplied Google Flow Music WAV is silent by default, loaded only after explicit activation, faded with hero presence, and suspended when hidden or offscreen. Runtime loop softening preserves the original file.
-- **Project themes:** reusable palettes register four featured projects; only Smile Care and SIX&7 have implemented showcases.
+- **Project themes:** reusable palettes register four featured projects; Smile Care, SIX&7 and Ember & Oak have implemented showcases.
 - **Spatial project passage:** two genuine screenshot planes lift, turn and travel through CSS perspective space. Native scroll and GSAP own the reversible poses; a sticky stage releases naturally into the next chapter.
 - **SIX&7 Shopify:** graphite editorial typography, real collection/product evidence, three responsive captures, implementation notes and an independent six-image gallery. Images are dated Shopify Draft-preview captures; the storefront link is explicitly password-protected. This is separate from the Next.js SIX&7 project.
+- **Ember & Oak:** a layered CSS 3D retreat introduces a warm espresso/cream restaurant-concept chapter, ten unchanged original captures, responsive tablet/mobile evidence and an independent accessible gallery. The reservation interface is evidence only; booking and form delivery are unverified.
 - **Hero:** BEYOND / THE INTERFACE typography, developer identity, entrance animation, and restrained depth response.
 - **Original 3D laptop:** supplied GLB, studio lighting, pointer interaction, and Apple-logo concealment applied at runtime. The original model file remains unchanged.
 - **Cinematic screen:** the supplied 29.5-second video plays on the original display mesh through Three.js `VideoTexture`, with matching UV orientation, sRGB color handling, and native source resolution.
@@ -69,6 +70,7 @@ OG_QA_URL=http://127.0.0.1:5183 npm run qa:phase22
 node qa/production-smoke.mjs
 OG_QA_URL=http://127.0.0.1:5183 node qa/reduced-layout-check.mjs
 OG_QA_URL=http://127.0.0.1:5183 npm run qa:phase3
+OG_QA_URL=http://127.0.0.1:5183 npm run qa:phase3c
 ```
 
 The focused Phase 2.2 suite expects a running development preview on port 5183 (`npm run dev -- --port 5183`) because it also checks the exported loop/theme functions. The existing scripts expect Google Chrome at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. Playwright Core is installed by `npm ci`; it does not download a browser. Other operating systems need a matching installed-browser path in the QA launch configuration.
@@ -115,7 +117,8 @@ This repository root corresponds to the local `prototype` directory. Discovery r
 ## Planned roadmap
 
 - **Phase 2.2 — completed and visually approved:** living environment, hero soundscape, project-theme foundations, and balanced reduced-motion storytelling. Recorded on `feature/phase-2.2-living-environment`; merging and deployment remain separate decisions.
-- **Phase 3B — completed and visually approved:** Smile Care → SIX&7 CSS 3D passage and complete SIX&7 chapter. Phase 3C and 3D require separate approval. The Phase 4 reel position remains after the future ClientScout showcase; no reel player or media loading is added.
+- **Phase 3B — completed and visually approved:** Smile Care → SIX&7 CSS 3D passage and complete SIX&7 chapter. Phase 3D requires separate approval. The Phase 4 reel position remains after the future ClientScout showcase; no reel player or media loading is added.
+- **Phase 3C — completed and visually approved:** SIX&7 → Ember & Oak layered passage and complete restaurant-concept showcase. Included in the feature-branch checkpoint; no ClientScout chapter, commercial reel, merge or deployment is included.
 - Expand the approved portfolio story with the remaining selected projects, showreel, skills presentation, archive, and closing contact experience.
 - Complete physical-device and cross-browser testing, accessibility review, and production asset-delivery optimization.
 - Plan production release and hosting separately. No release date or deployment is implied by this checkpoint.
@@ -129,3 +132,5 @@ Dependencies, generated builds, caches, temporary files, local tooling state, se
 Font notices are retained in `licenses/`. Soundtrack provenance and verified terms links are recorded in [licenses/hero-ambient.txt](licenses/hero-ambient.txt); no blanket music license is asserted. This checkpoint does not grant a new license to the portfolio source or supplied project/model/video assets. Third-party assets remain subject to their respective terms.
 
 The six SIX&7 WebPs total 192,184 bytes and are unchanged from the approved source captures. Their dates, source revision and reuse boundaries are recorded in [licenses/six7-captures.txt](licenses/six7-captures.txt); their checksums are included in the asset manifest. Generated Phase 3 screenshots, recordings and performance output remain ignored under `qa/phase3/`.
+
+The ten bounded Ember & Oak JPEGs total 605,383 bytes and are unchanged from the inspected source revision. The 1440×8333 full-page image is linked in the source repository rather than loaded by the portfolio. [Capture provenance](licenses/ember-oak-captures.txt) records the fictional-content and unresolved photography-licensing boundaries. Generated Phase 3C evidence remains local under ignored `qa/phase3c/`.
