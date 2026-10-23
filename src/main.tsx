@@ -11,6 +11,7 @@ import HeroSound from './HeroSound';
 import { useLivingEnvironment, type EnvironmentPaint } from './useLivingEnvironment';
 import { projectThemeStyle } from './projectThemes';
 import './environment.css';
+import SixSevenStory from './SixSevenStory';
 
 gsap.registerPlugin(ScrollTrigger);
 const Laptop = lazy(() => import('./scene'));
@@ -149,12 +150,12 @@ function App() {
     // Native fragment resolution can run before React and the upstream pin exist.
     // Correct the initial chapter/work destination once document geometry is ready.
     const hash = location.hash;
-    if (!['#work', '#story-frontend', '#story-responsive', '#story-build'].includes(hash)) return;
+    if (!['#work', '#story-frontend', '#story-responsive', '#story-build', '#six-and-seven', '#six-title', '#six-browse', '#six-product', '#six-responsive', '#six-build', '#six-evidence', '#six7-closing'].includes(hash)) return;
     let mounted = true;
     document.fonts.ready.then(() => requestAnimationFrame(() => {
       if (!mounted || location.hash !== hash) return;
       ScrollTrigger.refresh();
-      document.getElementById(hash.slice(1))?.scrollIntoView({ block: 'start', behavior: 'instant' });
+      document.getElementById(hash === '#six-and-seven' ? 'six-title' : hash.slice(1))?.scrollIntoView({ block: 'start', behavior: 'instant' });
     }));
     return () => { mounted = false; };
   }, []);
@@ -216,8 +217,10 @@ function App() {
         <div className="implementation"><p className="eyebrow">BENEATH THE INTERFACE</p><div><h3>Designed as a website.<br />Built as a system.</h3><p>A portable plugin holds the custom blocks, styling, appointment-request workflow, and administration tools. The public demo simulates submissions without saving records or sending mail.</p><button className="detail-button" aria-expanded={details} aria-controls="implementation-details" onClick={() => setDetails(!details)}>{details ? 'Close implementation notes' : 'Explore the implementation'} <span aria-hidden="true">{details ? '−' : '+'}</span></button>
           {details && <div id="implementation-details" className="implementation-details"><div><span>01 / PRESENTATION</span><h4>Six native Gutenberg blocks</h4><p>Custom card, treatment, dentist, testimonial, FAQ, and orbital-gallery blocks within the WordPress editor.</p></div><div><span>02 / FUNCTIONALITY</span><h4>A custom PHP plugin</h4><p>Appointment requests, review moderation, newsletter and inquiry handlers, with custom database tables and administration views. Source reviewed; end-to-end delivery has not been tested in this prototype.</p></div><div><span>03 / BOUNDARIES</span><h4>A practice project</h4><p>The clinic, doctors, testimonials and patient records are fictional. This is a portfolio demonstration, not a commissioned clinic or production patient service.</p></div></div>}
         </div></div>
-        <footer className="prototype-ending"><span className="signature">SB<span>/</span></span><p>One frame of a bigger story.</p><a className="text-link" href="#intro" onClick={e => { e.preventDefault(); scrollTo({ top: 0, behavior: reduce ? 'instant' : 'smooth' }); history.replaceState(null, '', location.pathname); }}>Back to the studio ↑</a></footer>
+        <a className="six-continue" href="#six-title">Continue to SIX&7 <span aria-hidden="true">↓</span></a>
       </section>
+      <SixSevenStory reduced={reduce}/>
+      <footer className="prototype-ending portfolio-ending"><span className="signature">SB<span>/</span></span><p>One frame of a bigger story.</p><a className="text-link" href="#intro" onClick={e => { e.preventDefault(); scrollTo({ top: 0, behavior: reduce ? 'instant' : 'smooth' }); history.replaceState(null, '', location.pathname); }}>Back to the studio ↑</a></footer>
     </main>
   </div>;
 }

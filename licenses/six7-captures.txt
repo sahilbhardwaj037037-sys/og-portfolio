@@ -1,0 +1,32 @@
+SIX&7 Shopify screenshot provenance — no new license grant
+
+Project: six7-shopify-store, the Shopify/Dawn practice project.
+This is separate from the Six-_7 Next.js project.
+Source: https://github.com/sahilbhardwaj037037-sys/six7-shopify-store
+Revision: 0d3c1ad98d849135906743a5e57b8e63edcffdc0
+Original files: docs/screenshots/*.webp
+Capture manifest: docs/screenshots/manifest.json at the same revision.
+Recorded capture date: 17 October 2026.
+Source documentation review: 20 October 2026.
+
+The user approved the six genuine captures for Phase 3B portfolio use.
+They were copied to public/media/six7/ unchanged, without re-encoding,
+retouching, replacing product imagery or generating storefront visuals.
+All six SHA-256 values match the source capture manifest. Dimensions,
+file sizes and hashes are recorded in docs/asset-integrity.json.
+Combined original file size: 192,184 bytes.
+
+desktop-home-hero.webp: approved Draft-preview release, 1440x900.
+desktop-collection.webp, desktop-product.webp: earlier Cream Motion Lab
+preview, 1440x1000.
+mobile-home.webp, mobile-collection.webp, mobile-product.webp: earlier
+Cream Motion Lab preview, 390x844; predate final homepage motion refinement.
+
+The anonymous store entry redirected to /password during discovery.
+These screenshots do not establish present stock, prices, store publication,
+checkout/payment processing, fulfillment or commercial results. The theme
+source extends Dawn; native Shopify commerce is not claimed as custom work.
+
+This provenance record does not invent or grant an open-source, stock-photo,
+Creative Commons or blanket third-party image license. The original theme,
+platform and photographic assets remain subject to their applicable terms.

@@ -10,7 +10,9 @@
     "qa": "node qa/browser-check.mjs",
     "qa:video": "node qa/video-check.mjs",
     "qa:phase22": "node qa/phase22-check.mjs",
-    "qa:phase22:performance": "node qa/phase22-performance.mjs"
+    "qa:phase22:performance": "node qa/phase22-performance.mjs",
+    "qa:phase3": "node qa/phase3-check.mjs",
+    "qa:phase3:performance": "node qa/phase3-performance.mjs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",

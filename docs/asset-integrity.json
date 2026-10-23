@@ -45,6 +45,36 @@
       "path": "public/media/hero-ambient.wav",
       "bytes": 8640044,
       "sha256": "3750340764638bf43f6583f46980faca68453d79da336632da43b8a0f7132716"
+    },
+    {
+      "path": "public/media/six7/desktop-collection.webp",
+      "bytes": 40128,
+      "sha256": "c4445815d6675b260adfe856d2555f624b6cc05e1160c7bf12c63b974ef98741"
+    },
+    {
+      "path": "public/media/six7/desktop-home-hero.webp",
+      "bytes": 53598,
+      "sha256": "05748beef85d76b1df43355385d937b555a141e0c3b5d088f6c22365363726b4"
+    },
+    {
+      "path": "public/media/six7/desktop-product.webp",
+      "bytes": 33204,
+      "sha256": "19eb2ef32a95c2f6c0dd78b0f3f2c8b1e2b94c4ce9a56ce0d9e3a5c5ee37772d"
+    },
+    {
+      "path": "public/media/six7/mobile-collection.webp",
+      "bytes": 21608,
+      "sha256": "25ece6a4c841bc2bc029fcfaff82701f2c88db3021fdcaaef033d40c36c88b34"
+    },
+    {
+      "path": "public/media/six7/mobile-home.webp",
+      "bytes": 25218,
+      "sha256": "b0f9c8ebf91ef741cb55abe982af1c80196aa769c928620958927669e595f91d"
+    },
+    {
+      "path": "public/media/six7/mobile-product.webp",
+      "bytes": 18428,
+      "sha256": "ffe51c5b47248fb2d634150cac1303420a947ad5723b5ef3f3d063e23c6c4530"
     }
   ]
 }
