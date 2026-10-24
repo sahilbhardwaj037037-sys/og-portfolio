@@ -20,13 +20,12 @@ export default function ClientScoutTransition({ reduced }: { reduced: boolean })
   return <div ref={root} className="scout-passage" aria-label="From restaurant atmosphere to an evidence-driven workspace">
     <div className="scout-stage">
       <div className="scout-cream" aria-hidden="true"/><div className="scout-registration" aria-hidden="true"/>
-      <div className="scout-passage-index" aria-hidden="true"><span>03 / EMBER & OAK</span><span>04 / CLIENTSCOUT AI</span></div>
       <div className="scout-camera"><div className="scout-world">
-        <div className="scout-passage-plane scout-departing" aria-hidden="true"><img src={emberImage(1)} alt="" width="1440" height="923" loading="lazy"/><span>ATMOSPHERE / A FINAL PERSPECTIVE</span></div>
+        <div className="scout-passage-plane scout-departing" aria-hidden="true"><img src={emberImage(1)} alt="" width="1440" height="923" loading="lazy"/></div>
         <div className="scout-passage-plane scout-detail-plane" aria-hidden="true"><img src={scoutImage(3)} alt="" width="1440" height="1000" loading="lazy" onError={event => { event.currentTarget.style.visibility = 'hidden'; }}/></div>
         <div className="scout-passage-plane scout-arriving"><ClientScoutCapture index={0} reveal windowed/></div>
       </div></div>
-      <div className="scout-arrival-caption" aria-hidden="true"><span>AN INTELLIGENT WORKSPACE</span><strong>Evidence, before the next step.</strong><span>IN DEVELOPMENT / LOCAL APPLICATION</span></div>
+      <div className="scout-arrival-caption" aria-hidden="true"><strong>Evidence, before the next step.</strong><span>IN DEVELOPMENT / LOCAL APPLICATION</span></div>
     </div>
   </div>;
 }

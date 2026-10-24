@@ -35,8 +35,8 @@ try{
  pass('Reverse traversal returns to the same spatial poses');
  for(const [width,height]of [[1000,700],[1440,700],[1920,700]]){
   await page.setViewportSize({width,height});await settle(page);await at(page,1);
-  const bounds=await page.evaluate(()=>{const r=s=>document.querySelector(s).getBoundingClientRect().toJSON();return {image:r('.passage-incoming img'),plane:r('.passage-incoming'),rail:r('.passage-registration'),arrival:r('.passage-arrival')}});
-  assert.ok(bounds.image.y>=bounds.rail.bottom+4&&bounds.plane.bottom<=bounds.arrival.y-8,JSON.stringify({width,height,bounds}));await fit(page);
+  const bounds=await page.evaluate(()=>{const r=s=>document.querySelector(s).getBoundingClientRect().toJSON();return {image:r('.passage-incoming img'),plane:r('.passage-incoming'),arrival:r('.passage-arrival')}});
+  assert.ok(bounds.image.y>=4&&bounds.plane.bottom<=bounds.arrival.y-8,JSON.stringify({width,height,bounds}));await fit(page);
  }
  await page.setViewportSize({width:1440,height:1000});await settle(page);pass('Short desktop and ultrawide stages keep the full frontal image clear of labels');
  await at(page,1);const first=await page.locator('.passage-incoming img').boundingBox();await page.mouse.wheel(0,80);await settle(page);const second=await page.locator('.passage-incoming img').boundingBox();assert.ok(Math.abs(second.y-first.y+80)<2);pass('Sticky release continues in document flow without a figure swap',{first,second});

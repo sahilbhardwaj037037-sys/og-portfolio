@@ -14,7 +14,7 @@ export default function AdditionalProjectCard({ project, index }: { project: Add
   }, []);
   return <li className="collection-slot" data-card={project.id} style={{ '--card-accent': project.accent } as CSSProperties}>
     <article aria-labelledby={`collection-${project.id}`}>
-      <div className="collection-card-rail"><span>{String(index + 1).padStart(2, '0')} / {project.category}</span><span>SELECTED STUDY</span></div>
+      <div className="collection-card-rail"><span>{project.category}</span></div>
       <figure ref={figure} className="collection-image" data-drag-surface>
         <div className="collection-image-plane">
           {failed ? <div className="collection-image-error" role="status"><strong>{project.name}</strong><span>Screenshot unavailable. Project details and links remain below.</span><button type="button" onClick={() => { setReady(false); setFailed(false); setAttempt(n => n + 1); }}>Retry {project.name} screenshot</button></div> : <>{!ready && <div className="collection-image-loading">{project.name}<span>ORIGINAL WEBSITE CAPTURE</span></div>}{load && <img key={attempt} src={assetUrl(`/media/additional-projects/${project.id}.webp`)} width="1440" height="1000" alt={project.alt} decoding="async" draggable={false} style={{ opacity: ready ? 1 : 0 }} onLoad={e => { void e.currentTarget.decode().then(() => setReady(true)).catch(() => setFailed(true)); }} onError={() => setFailed(true)}/>}</>}

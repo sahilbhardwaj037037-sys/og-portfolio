@@ -52,18 +52,16 @@ export default function SmileCareStory({reduced}:{reduced:boolean}){
 
   return <div className="case-story" ref={root} aria-label="Smile Care project story">
     <div className="story-media" aria-hidden="true">
-      <div className="story-media-label"><span>SMILE CARE CLINIC</span><span>DESIGN → DEVELOPMENT</span></div>
       <div className="story-desktop story-window"><div className="story-window-bar"><i/><i/><i/><span>Homepage / project capture</span></div><img src={assetUrl('/media/smile-desktop.png')} alt="" width="1440" height="757" loading="lazy"/></div>
-      <div className="story-phone"><div className="phone-frame"><img src={assetUrl('/media/smile-mobile.png')} alt="" width="500" height="701" loading="lazy"/></div><span>MOBILE / SAME IDENTITY</span></div>
+      <div className="story-phone"><div className="phone-frame"><img src={assetUrl('/media/smile-mobile.png')} alt="" width="500" height="701" loading="lazy"/></div></div>
       <div className="story-admin story-window"><div className="story-window-bar"><i/><i/><i/><span>WordPress / custom plugin</span></div><img src={assetUrl('/media/smile-admin.png')} alt="" width="1440" height="757" loading="lazy"/><div className="admin-annotation"><span className="annotation-dot"/> DEMO MODE — PUBLIC SUBMISSIONS ARE NOT SAVED</div></div>
-      <div className="story-media-footer"><span>GENUINE CAPTURES · PRACTICE PROJECT</span><span>01 — 03</span></div>
     </div>
     <div className="story-progress" aria-hidden="true"><div className="story-progress-fill"/></div>
     <div className="story-chapters">{chapters.map(chapter=><article className="story-chapter" id={`story-${chapter.id}`} key={chapter.id} tabIndex={-1}>
-      <p className="eyebrow"><span>{chapter.number}</span> {chapter.label}</p>
+      <p className="eyebrow">{chapter.label}</p>
       <h3>{chapter.title}</h3><p>{chapter.description}</p>
       {chapter.id==='build'&&<p className="story-safeguard">Public demo submissions are simulated: no saved records or outgoing mail. This is a practice project.</p>}
-      <figure className={`chapter-image chapter-image-${chapter.id}`}><img src={chapter.image} alt={chapter.alt} width={chapter.id==='responsive'?500:1440} height={chapter.id==='responsive'?701:757} loading="lazy"/><figcaption>{chapter.note}</figcaption></figure>
+      <figure className={`chapter-image chapter-image-${chapter.id}`}><img src={chapter.image} alt={chapter.alt} width={chapter.id==='responsive'?500:1440} height={chapter.id==='responsive'?701:757} loading="lazy"/><figcaption className="sr-only">{chapter.note}</figcaption></figure>
     </article>)}</div>
   </div>;
 }

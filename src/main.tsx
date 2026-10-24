@@ -19,6 +19,7 @@ import AdditionalProjectsGallery from './AdditionalProjectsGallery';
 import CommercialShowreel from './CommercialShowreel';
 import PortfolioClosing, { PortfolioFooter } from './PortfolioClosing';
 import SiteNavigation from './SiteNavigation';
+import './text-cleanup.css';
 
 gsap.registerPlugin(ScrollTrigger);
 const Laptop = lazy(() => import('./scene'));
@@ -179,9 +180,7 @@ function App() {
   return <div ref={root} style={projectThemeStyle('smile-care')} className={`portfolio ${reduce ? 'reduced' : ''} ${failure ? 'scene-failed' : ''}`}>
     <a className="skip-link" href="#work" onClick={skip}>Skip to selected work</a>
     <header className="site-header">
-      <a className="signature" href="#intro" aria-label="Sahil Bhardwaj, back to introduction">SB<span>/</span></a>
-      <span className="header-label">INDEPENDENT WEB DEVELOPER</span>
-      <div className="header-actions"><button className="motion-toggle" onClick={() => setManualReduce(!manualReduce)} disabled={systemReduce} title={systemReduce ? 'Reduced motion is enabled in your system settings' : undefined} aria-pressed={reduce}>{reduce ? 'Motion off' : 'Reduce motion'}<span className="toggle-dot" /></button><a className="header-work" href="#work" onClick={skip}>Selected work <Arrow diagonal /></a><SiteNavigation/></div>
+      <div className="header-actions"><button className="motion-toggle" onClick={() => setManualReduce(!manualReduce)} disabled={systemReduce} title={systemReduce ? 'Reduced motion is enabled in your system settings' : undefined} aria-pressed={reduce}>{reduce ? 'Motion off' : 'Reduce motion'}<span className="toggle-dot" /></button><a className="header-work" href="#work" onClick={skip}>Selected work</a><SiteNavigation/></div>
     </header>
     <main>
       <section id="intro" ref={journey} className="journey" aria-labelledby="hero-heading">
@@ -195,8 +194,7 @@ function App() {
             <p className="eyebrow"><span className="status-dot" /> SAHIL BHARDWAJ <span className="copy-rule" /> WEB DEVELOPER</p>
             <h1 id="hero-heading" className="sr-only">Beyond the interface.</h1>
           </div>
-          <div className="hero-aside"><p>THE VISIBLE.<br/>THE UNDERLYING.<br/><span>THE EXPERIENCE.</span></p></div>
-          <div className="hero-intent"><p>Web experiences, from the visible<br/>to the underlying system.</p><a className="text-link hero-cta" href="#work" onClick={skip}>Explore selected work <Arrow diagonal /></a></div>
+          <div className="hero-intent"><a className="text-link hero-cta" href="#work" onClick={skip}>Explore selected work</a></div>
           <div className={`laptop-layer ${ready && !failure ? 'is-ready' : ''}`} aria-hidden="true">
             {!failure && <Suspense fallback={null}><Laptop entrance={entrance} progress={progress} cinematic={cinematic} handle={scene} wake={wake} onFrame={paintOverlay} onReady={() => setReady(true)} onFailure={reason => {window.__og = {...window.__og, failureReason:reason};setFailure(true);}} reduced={reduce} interactiveMobile={interactiveMobile} /></Suspense>}
           </div>
@@ -205,27 +203,24 @@ function App() {
           {failure && <p className="load-status">Static studio view</p>}
           <button className="mobile-interaction" onClick={() => setInteractiveMobile(!interactiveMobile)} aria-pressed={interactiveMobile}>{interactiveMobile ? 'Pause movement' : 'Explore the laptop'} <Arrow diagonal /></button>
           <HeroSound presence={soundPresence}/>
-          <div className="hero-footnote"><p>FRONTEND <span>/</span> WORDPRESS <span>/</span> SHOPIFY</p><a href="#work" onClick={skip}><span className="scroll-line" /> SCROLL TO ENTER THE WORK <Arrow /></a><p className="hero-index">01 <span>—</span> 02</p></div>
-          <div className="handoff-heading" aria-hidden="true"><p className="eyebrow">01 / SELECTED WORK <span>WORDPRESS DEVELOPMENT</span></p><h2>Smile Care Clinic</h2></div>
+          <div className="hero-footnote"><p>FRONTEND <span>/</span> WORDPRESS <span>/</span> SHOPIFY</p></div>
+          <div className="handoff-heading" aria-hidden="true"><h2>Smile Care Clinic</h2></div>
           <div className="display-overlay" ref={overlay} aria-hidden="true"><img src={assetUrl('/media/smile-desktop.png')} alt="" /></div>
-          <div className="handoff-caption" aria-hidden="true"><span>A CALMER INTERFACE. A CUSTOM FOUNDATION.</span><span>PRACTICE PROJECT / 2026</span></div>
         </div>
       </section>
       <section id="work" className="project" data-project-theme="smile-care" tabIndex={-1} aria-labelledby="project-title">
-        <div className="project-intro"><p className="eyebrow">SELECTED WORK / 01</p><div><h2 id="project-title">A calmer interface.<br /><span>A custom foundation.</span></h2><p>A dental clinic concept that brings considered frontend design together with a custom WordPress plugin and native Gutenberg blocks.</p></div><div className="project-spec"><span>SMILE CARE CLINIC</span><p>WordPress · PHP<br />Gutenberg · JavaScript</p><span className="practice-label">Practice project</span></div></div>
+        <div className="project-intro"><p className="eyebrow">SMILE CARE CLINIC</p><div><h2 id="project-title">A calmer interface.<br /><span>A custom foundation.</span></h2><p>A dental clinic concept that brings considered frontend design together with a custom WordPress plugin and native Gutenberg blocks.</p></div><div className="project-spec"><span className="sr-only">SMILE CARE CLINIC</span><p>WordPress · PHP<br />Gutenberg · JavaScript</p><span className="practice-label">Practice project</span></div></div>
         <SmileCareStory reduced={reduce}/>
-        <div className="capture-heading"><p className="eyebrow">THE EVIDENCE / INSPECT THE CAPTURES</p><p>Original views. Your own pace.</p></div>
         <div className="project-gallery">
           <div className="gallery-toolbar"><div className="window-dots" aria-hidden="true"><i /><i /><i /></div><span>SMILE CARE CLINIC / {shots[shot].title.toUpperCase()}</span><div className="gallery-tabs" role="group" aria-label="Project screenshots">{shots.map((item, i) => <button key={item.id} aria-pressed={shot === i} onClick={() => { setShot(i); setImageError(false); }}>{item.title}</button>)}</div></div>
           <div className={`gallery-image ${shots[shot].id === 'mobile' ? 'mobile-shot' : ''}`}>
             {!imageError ? <img key={shots[shot].id} src={shots[shot].file} alt={shots[shot].alt} width={shots[shot].width} height={shots[shot].height} loading="lazy" onError={() => setImageError(true)} /> : <p role="status">This screenshot could not load. Choose another view.</p>}
           </div>
-          <p className="gallery-caption"><span>Genuine project capture. Interface content is fictional demonstration material.</span><span>{String(shot + 1).padStart(2, '0')} / 03</span></p>
+          <p className="gallery-caption"><span>Interface content is fictional demonstration material.</span></p>
         </div>
-        <div className="implementation"><p className="eyebrow">BENEATH THE INTERFACE</p><div><h3>Designed as a website.<br />Built as a system.</h3><p>A portable plugin holds the custom blocks, styling, appointment-request workflow, and administration tools. The public demo simulates submissions without saving records or sending mail.</p><button className="detail-button" aria-expanded={details} aria-controls="implementation-details" onClick={() => setDetails(!details)}>{details ? 'Close implementation notes' : 'Explore the implementation'} <span aria-hidden="true">{details ? '−' : '+'}</span></button>
-          {details && <div id="implementation-details" className="implementation-details"><div><span>01 / PRESENTATION</span><h4>Six native Gutenberg blocks</h4><p>Custom card, treatment, dentist, testimonial, FAQ, and orbital-gallery blocks within the WordPress editor.</p></div><div><span>02 / FUNCTIONALITY</span><h4>A custom PHP plugin</h4><p>Appointment requests, review moderation, newsletter and inquiry handlers, with custom database tables and administration views. Source reviewed; end-to-end delivery has not been tested in this prototype.</p></div><div><span>03 / BOUNDARIES</span><h4>A practice project</h4><p>The clinic, doctors, testimonials and patient records are fictional. This is a portfolio demonstration, not a commissioned clinic or production patient service.</p></div></div>}
+        <div className="implementation"><div><h3>Designed as a website.<br />Built as a system.</h3><p>A portable plugin holds the custom blocks, styling, appointment-request workflow, and administration tools. The public demo simulates submissions without saving records or sending mail.</p><button className="detail-button" aria-expanded={details} aria-controls="implementation-details" onClick={() => setDetails(!details)}>{details ? 'Close implementation notes' : 'Explore the implementation'} <span aria-hidden="true">{details ? '−' : '+'}</span></button>
+          {details && <div id="implementation-details" className="implementation-details"><div><span>PRESENTATION</span><h4>Six native Gutenberg blocks</h4><p>Custom card, treatment, dentist, testimonial, FAQ, and orbital-gallery blocks within the WordPress editor.</p></div><div><span>FUNCTIONALITY</span><h4>A custom PHP plugin</h4><p>Appointment requests, review moderation, newsletter and inquiry handlers, with custom database tables and administration views. Source reviewed; end-to-end delivery has not been tested in this prototype.</p></div><div><span>BOUNDARIES</span><h4>A practice project</h4><p>The clinic, doctors, testimonials and patient records are fictional. This is a portfolio demonstration, not a commissioned clinic or production patient service.</p></div></div>}
         </div></div>
-        <a className="six-continue" href="#six-title">Continue to SIX&7 <span aria-hidden="true">↓</span></a>
       </section>
       <SixSevenStory reduced={reduce}/>
       <EmberOakStory reduced={reduce}/>

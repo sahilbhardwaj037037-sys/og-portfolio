@@ -77,9 +77,9 @@ export default function CommercialShowreel({ reduced, selected }: { reduced: boo
   return <section ref={root} id="showreel" className="showreel" aria-labelledby="showreel-title" tabIndex={-1} data-state={status}>
     <div className="showreel-entrance"><div className="showreel-stage">
       <div className="showreel-light" aria-hidden="true"/>
-      <header className="showreel-heading"><div className="showreel-rail"><span>THE SCREENING ROOM</span><span>COMMERCIAL FILM / 00:41</span></div><div className="showreel-title-row"><h2 id="showreel-title">The work,<br/><em>in motion.</em></h2><p>An introduction to my web design<br/>and development practice.</p></div></header>
+      <header className="showreel-heading"><div className="showreel-rail"><span>THE SCREENING ROOM</span><span>COMMERCIAL FILM / 00:41</span></div><div className="showreel-title-row"><h2 id="showreel-title">The work,<br/><em>in motion.</em></h2></div></header>
       <div className="showreel-camera">
-        {!reduced && <figure className="showreel-echo" aria-hidden="true">{near && <img src={assetUrl(`/media/additional-projects/${project.id}.webp`)} width="1440" height="1000" alt=""/>}<figcaption>{project.name} / FROM THE COLLECTION</figcaption></figure>}
+        {!reduced && <figure className="showreel-echo" aria-hidden="true">{near && <img src={assetUrl(`/media/additional-projects/${project.id}.webp`)} width="1440" height="1000" alt=""/>}<figcaption>{project.name}</figcaption></figure>}
         <div className="showreel-screen" onFocusCapture={stabilize}>
           <video ref={video} controls playsInline preload="none" width="1920" height="1080" poster={near ? assetUrl('/media/showreel/poster.webp') : undefined} aria-label="Sahil Bhardwaj commercial portfolio film" aria-describedby="showreel-description"
             onPlay={() => { if (video.current?.paused) return; stabilize(); acquire(); setStarted(true); setStatus('loading'); }}
@@ -93,7 +93,7 @@ export default function CommercialShowreel({ reduced, selected }: { reduced: boo
           {!started && <div className="showreel-invitation"><button type="button" onClick={play} aria-label="Play commercial film, 41 seconds, with sound"><span className="showreel-play-icon" aria-hidden="true">▶</span><span>Play film <small>41 SECONDS / SOUND ON</small></span></button></div>}
         </div>
       </div>
-      <div className="showreel-caption"><p id="showreel-description">An original portfolio film.<span>English captions are part of the film. A readable transcript follows.</span></p><div className="showreel-feedback"><p role="status" aria-live="polite">{message}</p>{(status === 'ended' || status === 'error') && <button type="button" onClick={play}>{status === 'ended' ? 'Replay film' : 'Retry film'} <span aria-hidden="true">↗</span></button>}</div></div>
+      <div className="showreel-caption"><p id="showreel-description"><span>English captions are part of the film. A readable transcript follows.</span></p><div className="showreel-feedback"><p role="status" aria-live="polite">{message}</p>{(status === 'ended' || status === 'error') && <button type="button" onClick={play}>{status === 'ended' ? 'Replay film' : 'Retry film'} <span aria-hidden="true">↗</span></button>}</div></div>
     </div></div>
     <details className="showreel-transcript" id="showreel-transcript"><summary>Read the film transcript <span aria-hidden="true">+</span></summary><div>
       <p>First impressions matter, and for your business, that impression often starts with your website.</p>
@@ -102,6 +102,6 @@ export default function CommercialShowreel({ reduced, selected }: { reduced: boo
       <p>Every project starts with an idea. Let’s turn yours into something worth showing off. Have questions? Send me a message, and let’s discuss your project.</p>
       <p className="showreel-visual-note">Visual context: historical portfolio and practice-project captures accompany the narration. The WordPress Twenty Twenty-Five image is labeled as a theme reference; Shopify views include theme-editor previews.</p>
     </div></details>
-    <div className="showreel-outro"><span>A DIFFERENT MEDIUM. THE SAME INTENTION.</span><p>Made to be seen.<br/><em>Built to be felt.</em></p><a href="#showreel-title">Back to the film <span aria-hidden="true">↑</span></a></div>
+    <div className="showreel-outro"><p>Made to be seen.<br/><em>Built to be felt.</em></p><a href="#showreel-title">Back to the film <span aria-hidden="true">↑</span></a></div>
   </section>;
 }

@@ -6,7 +6,7 @@ const origin=process.env.OG_QA_URL||'http://127.0.0.1:5173';
 const phase=process.argv.includes('--before')?'before':'after';
 const out='qa/reduced-motion-review';
 fs.mkdirSync(out,{recursive:true});
-const hasBaseline=fs.existsSync(`${out}/before-normal-frontend.png`);
+
 const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--disable-background-networking','--no-first-run','--disable-sync']});
 const report={phase,origin,browser:browser.version(),checks:[],layouts:[],errors:[]};
 const check=(name)=>{report.checks.push(name);console.log('PASS',name);};
@@ -52,11 +52,11 @@ try{
   await context.close();
  }
  const {context,p}=await open(1440,1000,'no-preference');
- for(const id of ['frontend','responsive','build']){await at(p,id);await shot(p,`normal-${id}`);}
+ const normalPoses={};for(const id of ['frontend','responsive','build']){await at(p,id);await shot(p,`normal-${id}`);normalPoses[id]=await p.evaluate(()=>window.__og.story);}
  assert.equal((await layout(p)).depth,true);
- if(phase==='after'&&hasBaseline){
-  for(const id of ['frontend','responsive','build'])assert.ok(fs.readFileSync(`${out}/before-normal-${id}.png`).equals(fs.readFileSync(`${out}/after-normal-${id}.png`)),`Normal ${id} screenshot changed`);
-  check('All three normal-motion desktop chapter screenshots remain pixel-identical');
+ if(phase==='after'){
+  for(const id of ['build','responsive','frontend']){await at(p,id);const pose=await p.evaluate(()=>window.__og.story);assert.ok(Math.abs(pose.progress-normalPoses[id].progress)<.0001);assert.equal(pose.chapter,normalPoses[id].chapter);}
+  check('All three normal-motion chapter poses remain deterministic during reverse traversal after text cleanup');
  }
  await p.getByRole('button',{name:'Reduce motion',exact:true}).click();await at(p);
  let l=await layout(p);assert.equal(l.depth,false);

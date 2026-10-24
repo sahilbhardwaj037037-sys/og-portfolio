@@ -24,18 +24,17 @@ export default function ProjectTransition({ reduced }: { reduced: boolean }) {
   return <div ref={root} className="project-passage" aria-hidden="true">
     <div className="passage-stage">
       <div className="passage-graphite" />
-      <div className="passage-registration"><span>01 / SMILE CARE</span><span>02 / SIX&7</span></div>
       <div className="passage-camera"><div className="passage-world">
-        <div className="passage-plane passage-outgoing"><img src={assetUrl('/media/smile-desktop.png')} alt="" width="1440" height="757" loading="lazy"/><span>SMILE CARE CLINIC / A FINAL PERSPECTIVE</span></div>
+        <div className="passage-plane passage-outgoing"><img src={assetUrl('/media/smile-desktop.png')} alt="" width="1440" height="757" loading="lazy"/><span>SMILE CARE CLINIC</span></div>
         <div className="passage-plane passage-incoming">
           {failed ? <div className="passage-image-fallback">SIX&7<span>Storefront capture unavailable. Project evidence follows below.</span></div> : <div className="passage-source">
             {!loaded && <span className="passage-loading">SIX&7<small>LOADING THE ORIGINAL CAPTURE</small></span>}
             <img src={sixImage(0)} alt="" width="1440" height="900" loading="lazy" style={{ opacity: loaded ? 1 : 0 }} onLoad={event => { void event.currentTarget.decode().then(() => setLoaded(true)).catch(() => setFailed(true)); }} onError={() => setFailed(true)}/>
           </div>}
-          <span>SIX&7 / GENUINE SHOPIFY DRAFT PREVIEW</span>
+          <span>SIX&7</span>
         </div>
       </div></div>
-      <div className="passage-arrival"><span>THE NEXT POINT OF VIEW</span><strong>Commerce, edited.</strong><span>SHOPIFY / DAWN / LIQUID</span></div>
+      <div className="passage-arrival"><strong>Commerce, edited.</strong><span>SHOPIFY / DAWN / LIQUID</span></div>
     </div>
   </div>;
 }

@@ -12,6 +12,6 @@ export function EmberCapture({ index, className = '', reveal = false }: { index:
         <img src={emberImage(index)} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" style={reveal ? { opacity: ready ? 1 : 0 } : undefined} onLoad={event => { if (reveal) void event.currentTarget.decode().then(() => setReady(true)).catch(() => setFailed(true)); }} onError={() => setFailed(true)}/>
       </>}
     </div>
-    <figcaption><span>{image.label}</span><span>ORIGINAL PROJECT CAPTURE</span></figcaption>
+    <figcaption><span>{image.label}</span><span className="sr-only">ORIGINAL PROJECT CAPTURE</span></figcaption>
   </figure>;
 }

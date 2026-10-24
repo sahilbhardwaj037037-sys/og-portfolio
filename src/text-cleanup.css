@@ -1,0 +1,13 @@
+/* Text-removal reflow only: retain the approved controls and content grids. */
+.site-header .header-actions{margin-left:auto}
+/* The removed editorial label was the implementation grid's only first-column item. */
+.implementation{grid-template-columns:1fr}
+/* Remove only the number track; retain the expertise copy/technology pairing. */
+.expertise-row{grid-template-columns:1fr 1fr}
+.collection-card-rail>span:only-child{display:inline;color:inherit;font-size:inherit}
+@media(max-width:650px){.expertise-row{grid-template-columns:1fr}.expertise-row ul{grid-column:auto}}
+/* These heading grids previously began with a label-only track. */
+@media(min-width:1101px){.six-chapter-heading{grid-template-columns:1.6fr 1fr}.six-responsive-heading{grid-template-columns:1.5fr 1fr}}
+.six-margin-note>span:only-child{font-size:10px;letter-spacing:normal;white-space:normal}
+/* Keep the final implementation margin inside Smile Care's cream surface. */
+#work{display:flow-root}
