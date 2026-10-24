@@ -1,12 +1,14 @@
 # OG Portfolio
 
-**Under development · Phase 4.2 visually approved**
+**Under development · Phase 5.2 local preview — awaiting visual approval**
 
 A cinematic web developer portfolio by Sahil Bhardwaj, built around **BEYOND THE INTERFACE.** The Obsidian / Atelier direction pairs a graphite 3D laptop with an immersive typographic hero, then follows the screen into a warm ivory presentation of selected work.
 
 This branch extends the approved Phase 2.2 checkpoint with Phase 3B: a reversible CSS 3D passage from Smile Care into a complete SIX&7 Shopify practice-project showcase. See [the Phase 3B review](docs/PHASE-3B-REVIEW.md), [approved discovery plan](docs/PHASE-3A-DISCOVERY-PLAN.md), [Phase 2.2 review](docs/PHASE-2.2-REVIEW.md) and [reduced-motion correction](docs/REDUCED-MOTION-REVIEW.md). Phase 3B has been visually approved and committed. Phase 3C adds the visually approved Ember & Oak concept; see [the Phase 3C review](docs/PHASE-3C-REVIEW.md). Phase 3D adds the visually approved ClientScout AI showcase; see [the Phase 3D review](docs/PHASE-3D-REVIEW.md). The commercial reel is not implemented. This repository contains source code and runtime assets, with no deployment configured.
 
 ## Implemented experience
+
+- **Commercial screening room:** the approved 41-second original follows the complete collection. A brief reversible CSS 3D arrival leads to a native, user-initiated film with transcript, explicit audio coordination and static touch/reduced-motion layouts. [Phase 5.2 review](docs/PHASE-5.2-REVIEW.md).
 
 - **Additional projects:** a short ClientScout screenshot departure introduces four native swipe/drag cards: ApexFit, Aroma / Noctis, AETHER and ApexForm. Real captures, qualified concept copy and explicit GitHub links; only ApexFit has a public Live Website action. Reduced motion presents a complete static grid. See [the Phase 4.2 review](docs/PHASE-4.2-REVIEW.md).
 - **Living studio:** a warm ivory / graphite environment starts at 50/50, follows horizontal pointer movement with restrained easing, and stays static on touch or reduced-motion devices.
@@ -143,3 +145,16 @@ The ten bounded Ember & Oak JPEGs total 605,383 bytes and are unchanged from the
 The eleven ClientScout AI JPEGs total 1,213,244 bytes, unchanged from the approved source captures. They are October 20 development snapshots of a working tree containing pending 5.2 changes, with synthetic records and providers disabled—not clean-checkout 5.1 or deployment proof. [Provenance](licenses/clientscout-captures.txt) and [per-image inventory](docs/phase3d-asset-inventory.json) record these boundaries. Research/Settings reserves and older PNGs are excluded. Generated Phase 3D evidence remains ignored under `qa/phase3d/`.
 
 The four additional-project screenshots are separate WebP delivery derivatives preserving the approved originals and full framing. See [provenance](docs/phase42-capture-provenance.json) and [capture boundaries](licenses/additional-project-captures.txt). Run `npm run qa:gallery`, `npm run qa:gallery:accessibility` and `npm run qa:assets` with a local preview running; paired `npm run qa:gallery:performance` requires the preserved Phase 3D baseline on port 5180 and production on 5174. Generated evidence remains local under ignored `qa/phase42/`.
+
+Phase 5.2 local review: `http://127.0.0.1:5183/#showreel`. Start with `npm run dev -- --port 5183`. Run `npm run qa:showreel` against a production preview on 5174, and `node qa/showreel-lifecycle-check.mjs` with the Vite helper server on 5183. Paired `npm run qa:showreel:performance` uses the preserved Phase 4.2 build on 5180. No commit, push, merge, pull request, deployment or Skills/About/Contact implementation is included.
+
+
+## Fast-track launch sprint — local review
+
+Skills, About, approved direct Contact, six-destination navigation and the footer follow the preserved commercial film. The preceding Phase 5.2 entry describes its historical checkpoint; the sprint adds these sections without redesigning the approved showcases. No commit, push, merge or deployment is included.
+
+Preview: `http://127.0.0.1:5183/#skills` (start with `npm run dev -- --port 5183`). Run `npm run qa:launch` against production preview 5174; `node qa/launch-accessibility.mjs` checks the new sections' contrast, keyboard behavior and complete screenshots. Deployment preparation and root/subfolder build instructions are in [LAUNCH-DEPLOYMENT.md](docs/LAUNCH-DEPLOYMENT.md). `VITE_SITE_URL` is the final public base URL; leave it unset until the actual hostname is known. An isolated `/portfolio/` build is covered by `npm run qa:deployment` with its verification server on 5186.
+
+The approved 42 runtime assets remain unchanged. The one new image is the owned typographic 1200×630 social preview; all 43 records are checked by `npm run qa:assets`. No application dependency or contact-form service was added.
+
+The completed sprint review, test results, measured payload/cadence and screenshots are in [LAUNCH-REVIEW.md](docs/LAUNCH-REVIEW.md). Paired `npm run qa:launch:performance` expects the local preserved Phase 5.2 baseline on 5180 and production on 5174; it runs current-only samples when that baseline directory is absent.

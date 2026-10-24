@@ -200,6 +200,21 @@
       "path": "public/media/additional-projects/apexform.webp",
       "bytes": 93780,
       "sha256": "42a452313e7cf994b4e62754947d826f41a79668cb1106135989eba98f51f7b4"
+    },
+    {
+      "path": "public/media/showreel/commercial-1080p.mp4",
+      "bytes": 5747083,
+      "sha256": "a7efe982dec837b957ba342b68a850a79a651c442d8a2b286e1b30ecaccf8b15"
+    },
+    {
+      "path": "public/media/showreel/poster.webp",
+      "bytes": 34386,
+      "sha256": "5c4f1590f03c3a9b07655ab4c2e315048f7e36e0fc9142191215e91f4248628d"
+    },
+    {
+      "path": "public/social-preview.png",
+      "bytes": 49173,
+      "sha256": "6e27096557a68a210deb98d5cad28d7c710b32b1700053fe23dda16b4bbd7ff6"
     }
   ]
 }

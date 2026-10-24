@@ -1,3 +1,4 @@
+import { assetUrl } from './assetUrl';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { AdditionalProject } from './additionalProjects';
 
@@ -16,7 +17,7 @@ export default function AdditionalProjectCard({ project, index }: { project: Add
       <div className="collection-card-rail"><span>{String(index + 1).padStart(2, '0')} / {project.category}</span><span>SELECTED STUDY</span></div>
       <figure ref={figure} className="collection-image" data-drag-surface>
         <div className="collection-image-plane">
-          {failed ? <div className="collection-image-error" role="status"><strong>{project.name}</strong><span>Screenshot unavailable. Project details and links remain below.</span><button type="button" onClick={() => { setReady(false); setFailed(false); setAttempt(n => n + 1); }}>Retry {project.name} screenshot</button></div> : <>{!ready && <div className="collection-image-loading">{project.name}<span>ORIGINAL WEBSITE CAPTURE</span></div>}{load && <img key={attempt} src={`/media/additional-projects/${project.id}.webp`} width="1440" height="1000" alt={project.alt} decoding="async" draggable={false} style={{ opacity: ready ? 1 : 0 }} onLoad={e => { void e.currentTarget.decode().then(() => setReady(true)).catch(() => setFailed(true)); }} onError={() => setFailed(true)}/>}</>}
+          {failed ? <div className="collection-image-error" role="status"><strong>{project.name}</strong><span>Screenshot unavailable. Project details and links remain below.</span><button type="button" onClick={() => { setReady(false); setFailed(false); setAttempt(n => n + 1); }}>Retry {project.name} screenshot</button></div> : <>{!ready && <div className="collection-image-loading">{project.name}<span>ORIGINAL WEBSITE CAPTURE</span></div>}{load && <img key={attempt} src={assetUrl(`/media/additional-projects/${project.id}.webp`)} width="1440" height="1000" alt={project.alt} decoding="async" draggable={false} style={{ opacity: ready ? 1 : 0 }} onLoad={e => { void e.currentTarget.decode().then(() => setReady(true)).catch(() => setFailed(true)); }} onError={() => setFailed(true)}/>}</>}
         </div>
         <figcaption className="sr-only">Desktop capture, full original framing. {project.note}</figcaption>
       </figure>

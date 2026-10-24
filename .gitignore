@@ -59,3 +59,6 @@ recordings/
 /VIDEO-INTEGRATION-REPORT.md
 
 # Runtime MP4, GLB, project images, and fallback posters are intentionally tracked.
+
+# Local Netlify authentication/project state; deployment config is tracked separately.
+.netlify/

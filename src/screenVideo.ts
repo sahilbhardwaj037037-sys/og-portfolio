@@ -1,3 +1,4 @@
+import { assetUrl } from './assetUrl';
 import * as THREE from 'three';
 
 // Owns media scheduling separately from the protected camera/DOM choreography.
@@ -39,7 +40,7 @@ export function createScreenVideo(canvas: HTMLCanvasElement, invalidate: () => v
     if (desired()) {
       if (!loaded) {
         if (!video.canPlayType('video/mp4; codecs="avc1.640032"')) { fail('unsupported-codec'); return; }
-        loaded = true; video.src = '/media/sahil-screen-animation.mp4'; video.load();
+        loaded = true; video.src = assetUrl('/media/sahil-screen-animation.mp4'); video.load();
       }
       if (video.paused && !pending) {
         pending = true;

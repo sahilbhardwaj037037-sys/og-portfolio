@@ -1,3 +1,4 @@
+import { assetUrl } from './assetUrl';
 // The source WAV stays untouched. Only the decoded playback buffer is softened.
 export function createAmbientLoop(context: BaseAudioContext, original: AudioBuffer, overlapSeconds = .6) {
   const overlap = Math.min(Math.round(original.sampleRate * overlapSeconds), Math.floor(original.length / 4));
@@ -23,10 +24,11 @@ export function createHeroAudio(notify: (status: AudioStatus) => void) {
   let buffer: AudioBuffer | null = null, loading: Promise<void> | null = null;
   let enabled = false, presence = 0, disposed = false, failed = false, timer = 0, targetGain = 0;
   let meterTimer = 0, overlapSeconds = 0, maximumJoinStep = 0;
+  let suppressed = false, syncEpoch = 0;
   const abort = new AbortController();
   const publish = () => {
     window.__og = { ...window.__og, sound: { enabled, presence, state: context?.state || 'uninitialized', loaded: !!buffer,
-      targetGain, gain: gain?.gain.value || 0, loopDuration: buffer?.duration || 0, overlapSeconds, maximumJoinStep, sourceNodes: source ? 1 : 0 } };
+      targetGain, gain: gain?.gain.value || 0, loopDuration: buffer?.duration || 0, overlapSeconds, maximumJoinStep, sourceNodes: source ? 1 : 0, suppressed } };
   };
   const setStatus = (status: AudioStatus) => { if (!disposed) { notify(status); publish(); } };
   const fail = () => {
@@ -53,16 +55,18 @@ export function createHeroAudio(notify: (status: AudioStatus) => void) {
     publish();
   };
   const sync = async () => {
+    const epoch = ++syncEpoch;
     if (disposed) return;
-    if (!enabled || !presence || document.hidden || !buffer || !context || !gain) {
-      silence(document.hidden);
+    if (suppressed || !enabled || !presence || document.hidden || !buffer || !context || !gain) {
+      silence(suppressed || document.hidden);
       if (enabled && buffer) setStatus('paused');
       return;
     }
     clearTimeout(timer);
     try {
       await context.resume();
-      if (disposed || !enabled || !presence || document.hidden) { silence(document.hidden); return; }
+      if (epoch !== syncEpoch) return;
+      if (disposed || suppressed || !enabled || !presence || document.hidden) { silence(suppressed || document.hidden); return; }
       if (!source) { source = context.createBufferSource(); source.buffer = buffer; source.loop = true; source.connect(gain); source.start(); }
       const next = .16 * presence;
       if (Math.abs(next - targetGain) > .0001) {
@@ -80,17 +84,23 @@ export function createHeroAudio(notify: (status: AudioStatus) => void) {
   document.addEventListener('visibilitychange', visibility);
   publish();
   return {
+    setSuppressed(value: boolean) {
+      if (suppressed === value || disposed) return;
+      suppressed = value; ++syncEpoch;
+      if (value) { silence(true); if (enabled && buffer) setStatus('paused'); }
+      else void sync();
+    },
     // Called synchronously by a real button gesture before any fetch/await.
     toggle() {
-      enabled = !enabled; failed = false;
+      enabled = !enabled; failed = false; ++syncEpoch;
       if (!enabled) { silence(); setStatus('off'); return; }
       try {
         if (!context) { context = new AudioContext(); context.onstatechange = publish; gain = context.createGain(); gain.gain.value = 0; gain.connect(context.destination); }
-        void context.resume().catch(fail);
+        if (!suppressed) void context.resume().catch(fail);
         if (buffer) { void sync(); return; }
         setStatus('loading');
         if (!loading) loading = (async () => {
-          const response = await fetch('/media/hero-ambient.wav', { signal: abort.signal });
+          const response = await fetch(assetUrl('/media/hero-ambient.wav'), { signal: abort.signal });
           if (!response.ok) throw new Error('Audio unavailable');
           const original = await context!.decodeAudioData(await response.arrayBuffer());
           if (disposed) return;
@@ -111,7 +121,7 @@ export function createHeroAudio(notify: (status: AudioStatus) => void) {
       if (presence !== next) { presence = next; void sync(); }
     },
     dispose() {
-      disposed = true; enabled = false; clearTimeout(timer); clearTimeout(meterTimer); abort.abort();
+      disposed = true; enabled = false; ++syncEpoch; clearTimeout(timer); clearTimeout(meterTimer); abort.abort();
       document.removeEventListener('visibilitychange', visibility);
       if(context)context.onstatechange = null;
       source?.stop(); source?.disconnect(); gain?.disconnect(); void context?.close(); buffer = null;

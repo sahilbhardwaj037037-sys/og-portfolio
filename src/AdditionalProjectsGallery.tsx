@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { additionalProjects } from './additionalProjects';
 import AdditionalProjectCard from './AdditionalProjectCard';
 import GalleryEntrance from './GalleryEntrance';
@@ -6,9 +6,10 @@ import { useGalleryEntrance } from './useGalleryEntrance';
 import { useProjectCarousel } from './useProjectCarousel';
 import './additional-projects.css';
 
-export default function AdditionalProjectsGallery({ reduced }: { reduced: boolean }) {
+export default function AdditionalProjectsGallery({ reduced, onProjectChange }: { reduced: boolean; onProjectChange?: (index: number) => void }) {
   const root = useRef<HTMLElement>(null), viewport = useRef<HTMLDivElement>(null);
   const { active, go } = useProjectCarousel(viewport, reduced);
+  useEffect(() => { onProjectChange?.(active); }, [active, onProjectChange]);
   useGalleryEntrance(root, reduced);
   return <section ref={root} id="additional-projects" className={`collection ${reduced ? 'collection-static' : ''}`} aria-labelledby="collection-title" tabIndex={-1}>
     <div className="collection-entrance"><div className="collection-stage">

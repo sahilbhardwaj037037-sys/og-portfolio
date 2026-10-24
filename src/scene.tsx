@@ -1,3 +1,4 @@
+import { assetUrl } from './assetUrl';
 import React, { Component, Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
@@ -56,7 +57,7 @@ function prepareModel(source: THREE.Group) {
 
 function Studio(props: Props) {
   const { camera, gl, size, invalidate, scene } = useThree();
-  const gltf = useLoader(GLTFLoader, '/media/laptop-original.glb');
+  const gltf = useLoader(GLTFLoader, assetUrl('/media/laptop-original.glb'));
   const asset = useMemo(() => prepareModel(gltf.scene), [gltf]);
   const pointer = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
   const visible = useRef(true);
@@ -109,7 +110,7 @@ function Studio(props: Props) {
     document.fonts.ready.then(()=>{if(mounted){lastDraw.current=-1;invalidate();}});
     screenshot.onload = () => { imageReady.current = true; lastDraw.current = -1; invalidate(); };
     screenshot.onerror = () => props.onFailure('screen-image');
-    screenshot.src = '/media/smile-desktop.png';
+    screenshot.src = assetUrl('/media/smile-desktop.png');
     const onContextLost = (event: Event) => { event.preventDefault(); props.onFailure('context-lost'); };
     gl.domElement.addEventListener('webglcontextlost', onContextLost);
     const onVisibility = () => { visible.current = !document.hidden; if (visible.current) invalidate(); };

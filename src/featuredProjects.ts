@@ -1,3 +1,4 @@
+import { assetUrl } from './assetUrl';
 // These are Shopify Draft-preview captures, not the separate Next.js SIX&7 build.
 export const sixSeven = {
   id: 'six-and-seven',
@@ -16,7 +17,7 @@ export const sixSeven = {
     { id: 'mobile-product', label: 'Mobile product', file: 'mobile-product.webp', width: 390, height: 844, alt: 'Genuine SIX&7 Shopify mobile product view showing imagery and size choices' },
   ],
 } as const;
-export const sixImage = (index: number) => `/media/six7/${sixSeven.images[index].file}`;
+export const sixImage = (index: number) => assetUrl(`/media/six7/${sixSeven.images[index].file}`);
 
 // Original bounded captures from the fictional restaurant frontend, unchanged.
 export const emberOak = {
@@ -38,7 +39,7 @@ export const emberOak = {
     { id: 'compact', label: '320px opening', file: 'mobile-320-homepage.jpg', width: 320, height: 844, alt: 'Original compact 320-pixel Ember & Oak concept homepage' },
   ],
 } as const;
-export const emberImage = (index: number) => `/media/ember-oak/${emberOak.images[index].file}`;
+export const emberImage = (index: number) => assetUrl(`/media/ember-oak/${emberOak.images[index].file}`);
 
 // Genuine 20 October development captures; image commit is not the capture-time app state.
 export const clientScout = {
@@ -62,4 +63,4 @@ export const clientScout = {
     { file: "portfolio-navigation-mobile.jpg", label: "Navigation drawer", width: 390, height: 844, alt: "Genuine 390-pixel mobile navigation drawer with workspace destinations" },
   ],
 } as const;
-export const scoutImage = (index: number) => `/media/clientscout/${clientScout.images[index].file}`;
+export const scoutImage = (index: number) => assetUrl(`/media/clientscout/${clientScout.images[index].file}`);

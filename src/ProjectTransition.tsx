@@ -1,3 +1,4 @@
+import { assetUrl } from './assetUrl';
 import { useEffect, useRef, useState } from 'react';
 import { sixImage } from './featuredProjects';
 import { useProjectTransition } from './useProjectTransition';
@@ -25,7 +26,7 @@ export default function ProjectTransition({ reduced }: { reduced: boolean }) {
       <div className="passage-graphite" />
       <div className="passage-registration"><span>01 / SMILE CARE</span><span>02 / SIX&7</span></div>
       <div className="passage-camera"><div className="passage-world">
-        <div className="passage-plane passage-outgoing"><img src="/media/smile-desktop.png" alt="" width="1440" height="757" loading="lazy"/><span>SMILE CARE CLINIC / A FINAL PERSPECTIVE</span></div>
+        <div className="passage-plane passage-outgoing"><img src={assetUrl('/media/smile-desktop.png')} alt="" width="1440" height="757" loading="lazy"/><span>SMILE CARE CLINIC / A FINAL PERSPECTIVE</span></div>
         <div className="passage-plane passage-incoming">
           {failed ? <div className="passage-image-fallback">SIX&7<span>Storefront capture unavailable. Project evidence follows below.</span></div> : <div className="passage-source">
             {!loaded && <span className="passage-loading">SIX&7<small>LOADING THE ORIGINAL CAPTURE</small></span>}

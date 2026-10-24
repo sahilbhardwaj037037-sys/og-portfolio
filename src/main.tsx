@@ -1,3 +1,4 @@
+import { assetUrl } from './assetUrl';
 import React, { Suspense, lazy, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import gsap from 'gsap';
@@ -15,14 +16,17 @@ import SixSevenStory from './SixSevenStory';
 import EmberOakStory from './EmberOakStory';
 import ClientScoutStory from './ClientScoutStory';
 import AdditionalProjectsGallery from './AdditionalProjectsGallery';
+import CommercialShowreel from './CommercialShowreel';
+import PortfolioClosing, { PortfolioFooter } from './PortfolioClosing';
+import SiteNavigation from './SiteNavigation';
 
 gsap.registerPlugin(ScrollTrigger);
 const Laptop = lazy(() => import('./scene'));
 const Arrow = ({ diagonal = false }: { diagonal?: boolean }) => <span aria-hidden="true">{diagonal ? '↗' : '↓'}</span>;
 const shots = [
-  { id: 'desktop', title: 'Homepage', file: '/media/smile-desktop.png', width: 1440, height: 757, alt: 'Genuine Smile Care Clinic desktop homepage with navigation and dental hero' },
-  { id: 'mobile', title: 'Mobile', file: '/media/smile-mobile.png', width: 500, height: 701, alt: 'Genuine Smile Care Clinic mobile homepage' },
-  { id: 'admin', title: 'Administration', file: '/media/smile-admin.png', width: 1440, height: 757, alt: 'Genuine custom Smile Care Clinic administration dashboard and settings' },
+  { id: 'desktop', title: 'Homepage', file: assetUrl('/media/smile-desktop.png'), width: 1440, height: 757, alt: 'Genuine Smile Care Clinic desktop homepage with navigation and dental hero' },
+  { id: 'mobile', title: 'Mobile', file: assetUrl('/media/smile-mobile.png'), width: 500, height: 701, alt: 'Genuine Smile Care Clinic mobile homepage' },
+  { id: 'admin', title: 'Administration', file: assetUrl('/media/smile-admin.png'), width: 1440, height: 757, alt: 'Genuine custom Smile Care Clinic administration dashboard and settings' },
 ];
 
 function App() {
@@ -43,6 +47,7 @@ function App() {
   const [manualReduce, setManualReduce] = useState(false);
   const reduce = systemReduce || manualReduce;
   const [shot, setShot] = useState(0);
+  const [collectionProject, setCollectionProject] = useState(0);
   const [details, setDetails] = useState(false);
   const [imageError, setImageError] = useState(false);
   const [interactiveMobile, setInteractiveMobile] = useState(false);
@@ -153,7 +158,7 @@ function App() {
     // Native fragment resolution can run before React and the upstream pin exist.
     // Correct the initial chapter/work destination once document geometry is ready.
     const hash = location.hash;
-    if (!['#work', '#story-frontend', '#story-responsive', '#story-build', '#six-and-seven', '#six-title', '#six-browse', '#six-product', '#six-responsive', '#six-build', '#six-evidence', '#six7-closing', '#ember-and-oak', '#ember-title', '#ember-atmosphere', '#ember-experience', '#ember-responsive', '#ember-build', '#ember-evidence', '#ember-closing', '#clientscout-ai', '#scout-title', '#scout-workflow', '#scout-crm', '#scout-sources', '#scout-evidence', '#scout-build', '#scout-responsive', '#scout-gallery', '#clientscout-closing', '#additional-projects', '#collection-title'].includes(hash)) return;
+    if (!['#work', '#story-frontend', '#story-responsive', '#story-build', '#six-and-seven', '#six-title', '#six-browse', '#six-product', '#six-responsive', '#six-build', '#six-evidence', '#six7-closing', '#ember-and-oak', '#ember-title', '#ember-atmosphere', '#ember-experience', '#ember-responsive', '#ember-build', '#ember-evidence', '#ember-closing', '#clientscout-ai', '#scout-title', '#scout-workflow', '#scout-crm', '#scout-sources', '#scout-evidence', '#scout-build', '#scout-responsive', '#scout-gallery', '#clientscout-closing', '#additional-projects', '#collection-title', '#showreel', '#showreel-title', '#showreel-transcript', '#skills', '#about', '#contact'].includes(hash)) return;
     let mounted = true;
     document.fonts.ready.then(() => requestAnimationFrame(() => {
       if (!mounted || location.hash !== hash) return;
@@ -176,7 +181,7 @@ function App() {
     <header className="site-header">
       <a className="signature" href="#intro" aria-label="Sahil Bhardwaj, back to introduction">SB<span>/</span></a>
       <span className="header-label">INDEPENDENT WEB DEVELOPER</span>
-      <div className="header-actions"><button className="motion-toggle" onClick={() => setManualReduce(!manualReduce)} disabled={systemReduce} title={systemReduce ? 'Reduced motion is enabled in your system settings' : undefined} aria-pressed={reduce}>{reduce ? 'Motion off' : 'Reduce motion'}<span className="toggle-dot" /></button><a className="header-work" href="#work" onClick={skip}>Selected work <Arrow diagonal /></a></div>
+      <div className="header-actions"><button className="motion-toggle" onClick={() => setManualReduce(!manualReduce)} disabled={systemReduce} title={systemReduce ? 'Reduced motion is enabled in your system settings' : undefined} aria-pressed={reduce}>{reduce ? 'Motion off' : 'Reduce motion'}<span className="toggle-dot" /></button><a className="header-work" href="#work" onClick={skip}>Selected work <Arrow diagonal /></a><SiteNavigation/></div>
     </header>
     <main>
       <section id="intro" ref={journey} className="journey" aria-labelledby="hero-heading">
@@ -195,14 +200,14 @@ function App() {
           <div className={`laptop-layer ${ready && !failure ? 'is-ready' : ''}`} aria-hidden="true">
             {!failure && <Suspense fallback={null}><Laptop entrance={entrance} progress={progress} cinematic={cinematic} handle={scene} wake={wake} onFrame={paintOverlay} onReady={() => setReady(true)} onFailure={reason => {window.__og = {...window.__og, failureReason:reason};setFailure(true);}} reduced={reduce} interactiveMobile={interactiveMobile} /></Suspense>}
           </div>
-          <div className="device-fallback" aria-hidden="true"><img src="/media/laptop-poster-refined.png" alt="" onError={e => { e.currentTarget.style.display = 'none'; }} /><div className="fallback-workspace"><span>SB / SELECTED WORKSPACE</span><strong>Beyond the<br />interface.</strong><small>01 — SMILE CARE CLINIC</small></div></div>
+          <div className="device-fallback" aria-hidden="true"><img src={assetUrl('/media/laptop-poster-refined.png')} alt="" onError={e => { e.currentTarget.style.display = 'none'; }} /><div className="fallback-workspace"><span>SB / SELECTED WORKSPACE</span><strong>Beyond the<br />interface.</strong><small>01 — SMILE CARE CLINIC</small></div></div>
           {!ready && !failure && <p className="load-status" role="status">Preparing the studio<span>…</span></p>}
           {failure && <p className="load-status">Static studio view</p>}
           <button className="mobile-interaction" onClick={() => setInteractiveMobile(!interactiveMobile)} aria-pressed={interactiveMobile}>{interactiveMobile ? 'Pause movement' : 'Explore the laptop'} <Arrow diagonal /></button>
           <HeroSound presence={soundPresence}/>
           <div className="hero-footnote"><p>FRONTEND <span>/</span> WORDPRESS <span>/</span> SHOPIFY</p><a href="#work" onClick={skip}><span className="scroll-line" /> SCROLL TO ENTER THE WORK <Arrow /></a><p className="hero-index">01 <span>—</span> 02</p></div>
           <div className="handoff-heading" aria-hidden="true"><p className="eyebrow">01 / SELECTED WORK <span>WORDPRESS DEVELOPMENT</span></p><h2>Smile Care Clinic</h2></div>
-          <div className="display-overlay" ref={overlay} aria-hidden="true"><img src="/media/smile-desktop.png" alt="" /></div>
+          <div className="display-overlay" ref={overlay} aria-hidden="true"><img src={assetUrl('/media/smile-desktop.png')} alt="" /></div>
           <div className="handoff-caption" aria-hidden="true"><span>A CALMER INTERFACE. A CUSTOM FOUNDATION.</span><span>PRACTICE PROJECT / 2026</span></div>
         </div>
       </section>
@@ -225,9 +230,11 @@ function App() {
       <SixSevenStory reduced={reduce}/>
       <EmberOakStory reduced={reduce}/>
       <ClientScoutStory reduced={reduce}/>
-      <AdditionalProjectsGallery reduced={reduce}/>
-      <footer className="prototype-ending portfolio-ending"><span className="signature">SB<span>/</span></span><p>One frame of a bigger story.</p><a className="text-link" href="#intro" onClick={e => { e.preventDefault(); scrollTo({ top: 0, behavior: reduce ? 'instant' : 'smooth' }); history.replaceState(null, '', location.pathname); }}>Back to the studio ↑</a></footer>
+      <AdditionalProjectsGallery reduced={reduce} onProjectChange={setCollectionProject}/>
+      <CommercialShowreel reduced={reduce} selected={collectionProject}/>
+      <PortfolioClosing/>
     </main>
+    <PortfolioFooter/>
   </div>;
 }
 

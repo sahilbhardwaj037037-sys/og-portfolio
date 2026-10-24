@@ -1,0 +1,25 @@
+Commercial showreel — Phase 5.2
+
+Approved source: /Users/sahilbhardwaj/Documents/Og_portfolio/SSahil_Web_Development_Commercial_1080p.mp4
+Delivery: public/media/showreel/commercial-1080p.mp4
+Both SHA-256: a7efe982dec837b957ba342b68a850a79a651c442d8a2b286e1b30ecaccf8b15
+Both size: 5,747,083 bytes. Byte-identical copy, no remux/recompression/edit.
+41.000 seconds, 1920x1080, 30fps, H.264 High Level 4.0, AAC-LC stereo 48kHz.
+Separate from the unchanged 29.500-second MacBook screen animation.
+
+Poster: public/media/showreel/poster.webp, exact source frame at 1.000s.
+FFmpeg decoded PNG via pipe; Pillow Lanczos to 1280x720, WebP quality 88/method 6.
+Full 16:9 framing. No retouching, replacement or invented interface.
+Poster and delivery SHA-256/bytes: docs/asset-integrity.json.
+
+English word-highlight captions are burned into the original picture.
+Readable transcript follows the existing agency_promo_final/narration.txt,
+corroborated against local speech transcription of this exact MP4 in Phase 5.1.
+No new dialogue or redundant selectable caption overlay is introduced.
+Visual context notes are editorial descriptions, separated from spoken text.
+
+The film presents historical practice/concept captures; deployment,
+commercial results, client commissioning and completed integrations are not
+implied. The WordPress Twenty Twenty-Five view is labeled a theme reference;
+Shopify views include editor previews. Existing project qualifications remain.
+This record preserves existing provenance; it asserts no new third-party rights.

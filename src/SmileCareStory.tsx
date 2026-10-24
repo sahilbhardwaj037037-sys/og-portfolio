@@ -1,11 +1,12 @@
+import { assetUrl } from './assetUrl';
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const chapters = [
-  { id:'frontend', number:'01', title:<>A quieter kind<br/>of first impression.</>, label:'FRONTEND DESIGN', description:'An editorial homepage, warm neutrals, and a clear visual path from services to consultation requests.', image:'/media/smile-desktop.png', alt:'Genuine desktop homepage of the Smile Care practice project', note:'Homepage / actual project capture' },
-  { id:'responsive', number:'02', title:<>The same care.<br/>A different canvas.</>, label:'RESPONSIVE EXPERIENCE', description:'The real mobile presentation becomes a separate layer. The identity stays familiar while navigation, type, and content adapt to a narrower screen.', image:'/media/smile-mobile.png', alt:'Genuine mobile homepage showing the responsive Smile Care design', note:'Mobile / actual project capture' },
-  { id:'build', number:'03', title:<>Beyond the surface.<br/>Into the system.</>, label:'BEHIND THE BUILD', description:'A custom PHP plugin brings six native Gutenberg blocks, appointment-request handlers, and administration tools into WordPress.', image:'/media/smile-admin.png', alt:'Genuine Smile Care WordPress administration settings and demo safeguards', note:'Administration / actual project capture' },
+  { id:'frontend', number:'01', title:<>A quieter kind<br/>of first impression.</>, label:'FRONTEND DESIGN', description:'An editorial homepage, warm neutrals, and a clear visual path from services to consultation requests.', image:assetUrl('/media/smile-desktop.png'), alt:'Genuine desktop homepage of the Smile Care practice project', note:'Homepage / actual project capture' },
+  { id:'responsive', number:'02', title:<>The same care.<br/>A different canvas.</>, label:'RESPONSIVE EXPERIENCE', description:'The real mobile presentation becomes a separate layer. The identity stays familiar while navigation, type, and content adapt to a narrower screen.', image:assetUrl('/media/smile-mobile.png'), alt:'Genuine mobile homepage showing the responsive Smile Care design', note:'Mobile / actual project capture' },
+  { id:'build', number:'03', title:<>Beyond the surface.<br/>Into the system.</>, label:'BEHIND THE BUILD', description:'A custom PHP plugin brings six native Gutenberg blocks, appointment-request handlers, and administration tools into WordPress.', image:assetUrl('/media/smile-admin.png'), alt:'Genuine Smile Care WordPress administration settings and demo safeguards', note:'Administration / actual project capture' },
 ];
 const clamp=gsap.utils.clamp(0,1);
 const ramp=(a:number,b:number,p:number)=>{const v=clamp((p-a)/(b-a));return v*v*(3-2*v);};
@@ -52,9 +53,9 @@ export default function SmileCareStory({reduced}:{reduced:boolean}){
   return <div className="case-story" ref={root} aria-label="Smile Care project story">
     <div className="story-media" aria-hidden="true">
       <div className="story-media-label"><span>SMILE CARE CLINIC</span><span>DESIGN → DEVELOPMENT</span></div>
-      <div className="story-desktop story-window"><div className="story-window-bar"><i/><i/><i/><span>Homepage / project capture</span></div><img src="/media/smile-desktop.png" alt="" width="1440" height="757" loading="lazy"/></div>
-      <div className="story-phone"><div className="phone-frame"><img src="/media/smile-mobile.png" alt="" width="500" height="701" loading="lazy"/></div><span>MOBILE / SAME IDENTITY</span></div>
-      <div className="story-admin story-window"><div className="story-window-bar"><i/><i/><i/><span>WordPress / custom plugin</span></div><img src="/media/smile-admin.png" alt="" width="1440" height="757" loading="lazy"/><div className="admin-annotation"><span className="annotation-dot"/> DEMO MODE — PUBLIC SUBMISSIONS ARE NOT SAVED</div></div>
+      <div className="story-desktop story-window"><div className="story-window-bar"><i/><i/><i/><span>Homepage / project capture</span></div><img src={assetUrl('/media/smile-desktop.png')} alt="" width="1440" height="757" loading="lazy"/></div>
+      <div className="story-phone"><div className="phone-frame"><img src={assetUrl('/media/smile-mobile.png')} alt="" width="500" height="701" loading="lazy"/></div><span>MOBILE / SAME IDENTITY</span></div>
+      <div className="story-admin story-window"><div className="story-window-bar"><i/><i/><i/><span>WordPress / custom plugin</span></div><img src={assetUrl('/media/smile-admin.png')} alt="" width="1440" height="757" loading="lazy"/><div className="admin-annotation"><span className="annotation-dot"/> DEMO MODE — PUBLIC SUBMISSIONS ARE NOT SAVED</div></div>
       <div className="story-media-footer"><span>GENUINE CAPTURES · PRACTICE PROJECT</span><span>01 — 03</span></div>
     </div>
     <div className="story-progress" aria-hidden="true"><div className="story-progress-fill"/></div>

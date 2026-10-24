@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 import { createHeroAudio, type AudioStatus } from './heroAudio';
+import { subscribeFilmAudio } from './mediaAudioCoordinator';
 
 export default function HeroSound({ presence }: { presence: RefObject<(value: number, immediate?: boolean) => void> }) {
   const [status, setStatus] = useState<AudioStatus>('off');
   const controller = useRef<ReturnType<typeof createHeroAudio> | null>(null);
   useEffect(() => {
     controller.current = createHeroAudio(setStatus);
+    const unsubscribe = subscribeFilmAudio(value => controller.current?.setSuppressed(value));
     presence.current = value => controller.current?.update(value);
     // The first timeline paint may precede this passive effect.
     const p = Number(window.__og?.progress || 0);
@@ -27,7 +29,7 @@ export default function HeroSound({ presence }: { presence: RefObject<(value: nu
     // Both timeline and intersection must agree before audio is eligible.
     presence.current = (value, immediate) => controller.current?.update(visibleArea * value, immediate || visibleArea === 0);
     observer.observe(stage);
-    return () => { observer.disconnect(); presence.current = () => {}; controller.current?.dispose(); controller.current = null; };
+    return () => { unsubscribe(); observer.disconnect(); presence.current = () => {}; controller.current?.dispose(); controller.current = null; };
   }, [presence]);
   const enabled = status === 'on' || status === 'paused' || status === 'loading';
   const label = status === 'error' ? 'Retry hero sound' : enabled ? 'Disable hero sound' : 'Enable hero sound';
