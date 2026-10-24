@@ -55,7 +55,7 @@ export default function EmberOakStory({ reduced }: { reduced: boolean }) {
       <div id={emberOak.exit.id} className="ember-closing ember-chapter" data-exit-project="ember-and-oak">
         <p className="ember-kicker">EMBER & OAK / A RESTAURANT WEBSITE CONCEPT</p>
         <div className="ember-closing-composition"><div><span className="ember-closing-mark" aria-hidden="true">E<span>&</span>O</span><h3>Crafted for<br/><em>the feeling.</em></h3></div><EmberCapture index={1}/></div>
-        <div className="ember-closing-links"><p>A fictional place.<br/>A genuine frontend project.</p><div><a href={emberOak.demo} target="_blank" rel="noopener noreferrer">View Live Demo <span aria-hidden="true">↗</span></a><a href={emberOak.repository} target="_blank" rel="noopener noreferrer">GitHub Repository <span aria-hidden="true">↗</span></a></div></div>
+        <div className="ember-closing-links"><p>A fictional place.<br/>A genuine frontend project.</p><div><a href={emberOak.repository} target="_blank" rel="noopener noreferrer">GitHub Repository <span aria-hidden="true">↗</span></a></div></div>
       </div>
     </div>
   </section>;

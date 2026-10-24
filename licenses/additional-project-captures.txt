@@ -1,0 +1,38 @@
+Additional Projects Gallery — genuine capture provenance, no new license grant
+
+Approved order: ApexFit, Aroma / Noctis, AETHER, ApexForm.
+Phase 4.1 evidence and masters are preserved outside the application under
+../discovery/phase-4.1/. The user approved separate optimized delivery
+assets for Phase 4.2. docs/phase42-capture-provenance.json records exact
+master and derivative SHA-256, byte counts, dimensions and source records.
+Runtime derivative hashes are also in docs/asset-integrity.json.
+
+ApexFit / Aroma / ApexForm masters are original 1440x1000 PNG captures
+committed respectively at 4784803d01197198ffe701675129e94365d48a09,
+067499f21e30abb65977f75e08df54d408f23525 and
+92c98a1172bd384a2ef988f1992b88e936cdd6d2. Their original Git blobs and
+SHA-256 were verified during Phase 4.1 and rechecked before conversion.
+The AETHER master is the genuine 24 October 2026 public-page capture of
+https://sahilbhardwaj037037-sys.github.io/Aether-Ai/ from that discovery.
+Deployment identity matched; exact deployment-to-source revision parity
+was not established. Its inspected source revision was
+430546f096ddbfeb0b4e2883eee92b194b4f4086.
+
+Delivery assets: Pillow WebP, quality 88, method 6. All retain the original
+1440x1000 dimensions and complete framing. No screenshot UI was retouched,
+invented, recolored or replaced. Original masters remain byte-identical.
+No stock, AI-generated substitute or new original-project asset is added.
+
+These are website practice/concept captures. Screenshot statistics,
+testimonials, commercial/service claims and prices are illustrative.
+Aroma's live touch runtime failed during discovery; no live link is
+advertised. ApexForm's mobile collapse/form delivery are incomplete.
+AETHER's AI-service copy is a website concept, not verified operations.
+ApexFit external booking/payment/admin/newsletter delivery is unverified.
+
+Public repository access and the user's asset selection do not establish
+a blanket code, image, trademark or screenshot license. Underlying photo,
+mark and source obligations remain applicable; no new reuse rights or
+third-party endorsements are claimed. No original repository was edited.
+The entrance reuses the existing unchanged ClientScout lead-detail
+capture; its synthetic-data provenance remains in clientscout-captures.txt.

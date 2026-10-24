@@ -14,6 +14,7 @@ import './environment.css';
 import SixSevenStory from './SixSevenStory';
 import EmberOakStory from './EmberOakStory';
 import ClientScoutStory from './ClientScoutStory';
+import AdditionalProjectsGallery from './AdditionalProjectsGallery';
 
 gsap.registerPlugin(ScrollTrigger);
 const Laptop = lazy(() => import('./scene'));
@@ -152,7 +153,7 @@ function App() {
     // Native fragment resolution can run before React and the upstream pin exist.
     // Correct the initial chapter/work destination once document geometry is ready.
     const hash = location.hash;
-    if (!['#work', '#story-frontend', '#story-responsive', '#story-build', '#six-and-seven', '#six-title', '#six-browse', '#six-product', '#six-responsive', '#six-build', '#six-evidence', '#six7-closing', '#ember-and-oak', '#ember-title', '#ember-atmosphere', '#ember-experience', '#ember-responsive', '#ember-build', '#ember-evidence', '#ember-closing', '#clientscout-ai', '#scout-title', '#scout-workflow', '#scout-crm', '#scout-sources', '#scout-evidence', '#scout-build', '#scout-responsive', '#scout-gallery', '#clientscout-closing'].includes(hash)) return;
+    if (!['#work', '#story-frontend', '#story-responsive', '#story-build', '#six-and-seven', '#six-title', '#six-browse', '#six-product', '#six-responsive', '#six-build', '#six-evidence', '#six7-closing', '#ember-and-oak', '#ember-title', '#ember-atmosphere', '#ember-experience', '#ember-responsive', '#ember-build', '#ember-evidence', '#ember-closing', '#clientscout-ai', '#scout-title', '#scout-workflow', '#scout-crm', '#scout-sources', '#scout-evidence', '#scout-build', '#scout-responsive', '#scout-gallery', '#clientscout-closing', '#additional-projects', '#collection-title'].includes(hash)) return;
     let mounted = true;
     document.fonts.ready.then(() => requestAnimationFrame(() => {
       if (!mounted || location.hash !== hash) return;
@@ -224,6 +225,7 @@ function App() {
       <SixSevenStory reduced={reduce}/>
       <EmberOakStory reduced={reduce}/>
       <ClientScoutStory reduced={reduce}/>
+      <AdditionalProjectsGallery reduced={reduce}/>
       <footer className="prototype-ending portfolio-ending"><span className="signature">SB<span>/</span></span><p>One frame of a bigger story.</p><a className="text-link" href="#intro" onClick={e => { e.preventDefault(); scrollTo({ top: 0, behavior: reduce ? 'instant' : 'smooth' }); history.replaceState(null, '', location.pathname); }}>Back to the studio ↑</a></footer>
     </main>
   </div>;

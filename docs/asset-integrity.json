@@ -180,6 +180,26 @@
       "path": "public/media/clientscout/portfolio-navigation-mobile.jpg",
       "bytes": 23723,
       "sha256": "77463c5907802accb5c281717dcab1eba74dd83673cbf3cfdd77833c723f7c15"
+    },
+    {
+      "path": "public/media/additional-projects/apexfit.webp",
+      "bytes": 66720,
+      "sha256": "e4a3a1d64ec31d1f3d5ee3a72a81c8c80354b16fd8c3a4a4944d7df7c3d33acc"
+    },
+    {
+      "path": "public/media/additional-projects/aroma.webp",
+      "bytes": 30658,
+      "sha256": "1ca3bf6092cc85e3a6fe8e7102d79c1971be3d5712c401b9aecf4d86aa86190c"
+    },
+    {
+      "path": "public/media/additional-projects/aether.webp",
+      "bytes": 40104,
+      "sha256": "e55188f5275cc845353272988ff55ba9ef5e41ff467f6a90a44fd4cadba792a0"
+    },
+    {
+      "path": "public/media/additional-projects/apexform.webp",
+      "bytes": 93780,
+      "sha256": "42a452313e7cf994b4e62754947d826f41a79668cb1106135989eba98f51f7b4"
     }
   ]
 }

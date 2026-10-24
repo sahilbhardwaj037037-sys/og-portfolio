@@ -1,6 +1,6 @@
 # OG Portfolio
 
-**Under development · Phase 3D complete and visually approved**
+**Under development · Phase 4.2 visually approved**
 
 A cinematic web developer portfolio by Sahil Bhardwaj, built around **BEYOND THE INTERFACE.** The Obsidian / Atelier direction pairs a graphite 3D laptop with an immersive typographic hero, then follows the screen into a warm ivory presentation of selected work.
 
@@ -8,6 +8,7 @@ This branch extends the approved Phase 2.2 checkpoint with Phase 3B: a reversibl
 
 ## Implemented experience
 
+- **Additional projects:** a short ClientScout screenshot departure introduces four native swipe/drag cards: ApexFit, Aroma / Noctis, AETHER and ApexForm. Real captures, qualified concept copy and explicit GitHub links; only ApexFit has a public Live Website action. Reduced motion presents a complete static grid. See [the Phase 4.2 review](docs/PHASE-4.2-REVIEW.md).
 - **Living studio:** a warm ivory / graphite environment starts at 50/50, follows horizontal pointer movement with restrained easing, and stays static on touch or reduced-motion devices.
 - **Hero soundscape:** the supplied Google Flow Music WAV is silent by default, loaded only after explicit activation, faded with hero presence, and suspended when hidden or offscreen. Runtime loop softening preserves the original file.
 - **Project themes:** reusable palettes register four featured projects; all four approved project identities have implemented showcases.
@@ -122,6 +123,7 @@ This repository root corresponds to the local `prototype` directory. Discovery r
 - **Phase 3B — completed and visually approved:** Smile Care → SIX&7 CSS 3D passage and complete SIX&7 chapter. Later phases require separate approval. The Phase 4 reel position remains after the ClientScout showcase; no reel player or media loading is added.
 - **Phase 3C — completed and visually approved:** SIX&7 → Ember & Oak layered passage and complete restaurant-concept showcase. Included in the feature-branch checkpoint; no commercial reel, merge or deployment is included.
 - **Phase 3D — completed and visually approved:** Ember & Oak → ClientScout AI hinge/alignment passage and complete fourth-project showcase. Included in the feature-branch checkpoint; no pull request, merge, deployment or next-section work is included.
+- **Phase 4.2 — completed and visually approved:** cinematic additional-project gallery and final website-link correction, authorized for this feature-branch checkpoint. No commercial showreel, Skills/About/Contact, merge or deployment included.
 - Expand the approved portfolio story with the remaining selected projects, showreel, skills presentation, archive, and closing contact experience.
 - Complete physical-device and cross-browser testing, accessibility review, and production asset-delivery optimization.
 - Plan production release and hosting separately. No release date or deployment is implied by this checkpoint.
@@ -139,3 +141,5 @@ The six SIX&7 WebPs total 192,184 bytes and are unchanged from the approved sour
 The ten bounded Ember & Oak JPEGs total 605,383 bytes and are unchanged from the inspected source revision. The 1440×8333 full-page image is linked in the source repository rather than loaded by the portfolio. [Capture provenance](licenses/ember-oak-captures.txt) records the fictional-content and unresolved photography-licensing boundaries. Generated Phase 3C evidence remains local under ignored `qa/phase3c/`.
 
 The eleven ClientScout AI JPEGs total 1,213,244 bytes, unchanged from the approved source captures. They are October 20 development snapshots of a working tree containing pending 5.2 changes, with synthetic records and providers disabled—not clean-checkout 5.1 or deployment proof. [Provenance](licenses/clientscout-captures.txt) and [per-image inventory](docs/phase3d-asset-inventory.json) record these boundaries. Research/Settings reserves and older PNGs are excluded. Generated Phase 3D evidence remains ignored under `qa/phase3d/`.
+
+The four additional-project screenshots are separate WebP delivery derivatives preserving the approved originals and full framing. See [provenance](docs/phase42-capture-provenance.json) and [capture boundaries](licenses/additional-project-captures.txt). Run `npm run qa:gallery`, `npm run qa:gallery:accessibility` and `npm run qa:assets` with a local preview running; paired `npm run qa:gallery:performance` requires the preserved Phase 3D baseline on port 5180 and production on 5174. Generated evidence remains local under ignored `qa/phase42/`.

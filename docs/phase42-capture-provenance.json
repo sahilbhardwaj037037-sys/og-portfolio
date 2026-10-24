@@ -1,0 +1,93 @@
+[
+  {
+    "id": "apexfit",
+    "master": "discovery/phase-4.1/screenshots/ApexFit/apexfit-desktop-hero.png",
+    "masterSha256": "0e923861d335457092a1c82e9c714a31a26d054ec8507d4f9a94f3b8280d93ec",
+    "source": {
+      "project": "ApexFit",
+      "revision": "4784803d01197198ffe701675129e94365d48a09",
+      "sourcePath": "docs/screenshots/apexfit-desktop-hero.png",
+      "gitBlob": "7e333be0235de83ab51db64bf60bb34f4aa7dfda",
+      "bytes": 487180,
+      "sourceUrl": "https://github.com/sahilbhardwaj037037-sys/ApexFit/blob/4784803d01197198ffe701675129e94365d48a09/docs/screenshots/apexfit-desktop-hero.png",
+      "sha256": "0e923861d335457092a1c82e9c714a31a26d054ec8507d4f9a94f3b8280d93ec",
+      "width": 1440,
+      "height": 1000
+    },
+    "derivative": "public/media/additional-projects/apexfit.webp",
+    "width": 1440,
+    "height": 1000,
+    "bytes": 66720,
+    "sha256": "e4a3a1d64ec31d1f3d5ee3a72a81c8c80354b16fd8c3a4a4944d7df7c3d33acc",
+    "conversion": "Pillow WebP quality=88 method=6; original 1440x1000 dimensions and full framing; no retouching"
+  },
+  {
+    "id": "aroma",
+    "master": "discovery/phase-4.1/screenshots/Aroma/desktop-hero.png",
+    "masterSha256": "08e8031b95647c726d5e0ffcb816875be50970f3b64bac77a183d954f40aca30",
+    "source": {
+      "project": "Aroma",
+      "revision": "067499f21e30abb65977f75e08df54d408f23525",
+      "sourcePath": "docs/screenshots/desktop-hero.png",
+      "gitBlob": "6780b693e43e336d8bdca5102f45feffc8bda8c9",
+      "bytes": 692713,
+      "sourceUrl": "https://github.com/sahilbhardwaj037037-sys/Aroma/blob/067499f21e30abb65977f75e08df54d408f23525/docs/screenshots/desktop-hero.png",
+      "sha256": "08e8031b95647c726d5e0ffcb816875be50970f3b64bac77a183d954f40aca30",
+      "width": 1440,
+      "height": 1000
+    },
+    "derivative": "public/media/additional-projects/aroma.webp",
+    "width": 1440,
+    "height": 1000,
+    "bytes": 30658,
+    "sha256": "1ca3bf6092cc85e3a6fe8e7102d79c1971be3d5712c401b9aecf4d86aa86190c",
+    "conversion": "Pillow WebP quality=88 method=6; original 1440x1000 dimensions and full framing; no retouching"
+  },
+  {
+    "id": "aether",
+    "master": "discovery/phase-4.1/captures/Aether-Ai-live-desktop-1440.png",
+    "masterSha256": "23e2a3d21d134168c3ba9c0a956cd1db8fa2829f59e3e31f7e491f13c30c8207",
+    "source": {
+      "project": "Aether-Ai",
+      "file": "captures/Aether-Ai-live-desktop-1440.png",
+      "url": "https://sahilbhardwaj037037-sys.github.io/Aether-Ai/",
+      "date": "24 October 2026",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 827372,
+      "sha256": "23e2a3d21d134168c3ba9c0a956cd1db8fa2829f59e3e31f7e491f13c30c8207",
+      "http": 200,
+      "errors": [],
+      "usable": true,
+      "sourceReport": "live-results.json"
+    },
+    "derivative": "public/media/additional-projects/aether.webp",
+    "width": 1440,
+    "height": 1000,
+    "bytes": 40104,
+    "sha256": "e55188f5275cc845353272988ff55ba9ef5e41ff467f6a90a44fd4cadba792a0",
+    "conversion": "Pillow WebP quality=88 method=6; original 1440x1000 dimensions and full framing; no retouching"
+  },
+  {
+    "id": "apexform",
+    "master": "discovery/phase-4.1/screenshots/Apexform/desktop-hero-1440.png",
+    "masterSha256": "cb83e99aec8c65205cc7b45d121dd7f6d3d092f7378adef8b1f1e86728d1f235",
+    "source": {
+      "project": "Apexform",
+      "revision": "92c98a1172bd384a2ef988f1992b88e936cdd6d2",
+      "sourcePath": "docs/screenshots/desktop-hero-1440.png",
+      "gitBlob": "a83f3790c2b1f3d12ecf32aa4efc4d69f9019222",
+      "bytes": 1263428,
+      "sourceUrl": "https://github.com/sahilbhardwaj037037-sys/Apexform/blob/92c98a1172bd384a2ef988f1992b88e936cdd6d2/docs/screenshots/desktop-hero-1440.png",
+      "sha256": "cb83e99aec8c65205cc7b45d121dd7f6d3d092f7378adef8b1f1e86728d1f235",
+      "width": 1440,
+      "height": 1000
+    },
+    "derivative": "public/media/additional-projects/apexform.webp",
+    "width": 1440,
+    "height": 1000,
+    "bytes": 93780,
+    "sha256": "42a452313e7cf994b4e62754947d826f41a79668cb1106135989eba98f51f7b4",
+    "conversion": "Pillow WebP quality=88 method=6; original 1440x1000 dimensions and full framing; no retouching"
+  }
+]

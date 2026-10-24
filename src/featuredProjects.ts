@@ -22,7 +22,6 @@ export const sixImage = (index: number) => `/media/six7/${sixSeven.images[index]
 export const emberOak = {
   id: 'ember-and-oak',
   repository: 'https://github.com/sahilbhardwaj037037-sys/Ember-Oak',
-  demo: 'https://sahilbhardwaj037037-sys.github.io/Ember-Oak/',
   revision: 'bf30d00a95273e9177f06fef3da0b9415467de24',
   fullCapture: 'https://github.com/sahilbhardwaj037037-sys/Ember-Oak/blob/bf30d00a95273e9177f06fef3da0b9415467de24/docs/screenshots/desktop-full-homepage.jpg',
   exit: { id: 'ember-closing', next: null },

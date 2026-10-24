@@ -16,7 +16,11 @@
     "qa:phase3c": "node qa/phase3c-check.mjs",
     "qa:phase3c:performance": "node qa/phase3c-performance.mjs",
     "qa:phase3d": "node qa/phase3d-check.mjs",
-    "qa:phase3d:performance": "node qa/phase3d-performance.mjs"
+    "qa:phase3d:performance": "node qa/phase3d-performance.mjs",
+    "qa:gallery": "node qa/phase4-gallery-check.mjs",
+    "qa:gallery:performance": "node qa/phase4-gallery-performance.mjs",
+    "qa:assets": "node qa/asset-integrity-check.mjs",
+    "qa:gallery:accessibility": "node qa/phase4-gallery-accessibility.mjs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",
