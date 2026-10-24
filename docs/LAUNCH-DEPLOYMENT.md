@@ -1,45 +1,69 @@
-# Launch preparation — local only
+# Vercel launch guide
 
-The app is a static Vite/React document with native fragment navigation. It needs no backend, database, contact service or new dependency. No site was registered, published or deployed during this sprint. Git remains on `feature/phase-3-cinematic-projects` with all earlier uncommitted work preserved.
+The completed portfolio is launch-ready and has not yet been publicly deployed. This guide supersedes the earlier Netlify recommendation. `netlify.toml` is retained as historical hosting configuration; Vercel uses `vercel.json`.
 
-## Recommended hosting
+No Vercel project has been created or linked by this preparation, and no deployment command has been run.
 
-**Netlify CLI manual deployment** is the recommended release path for this checkout: publish the built `dist` folder after explicit approval, without first committing or pushing. The output is about 54.1 MB and contains the unchanged 23.46 MB laptop video and 10.85 MB model. Netlify's [upload guidance](https://docs.netlify.com/manage/projects/add-new-project/#faq-for-using-the-drag-and-drop-publisher) recommends CLI deployment for larger projects; the browser dropzone works best below 50 MB and can stall on individual files above 10 MB. Keep the approved assets intact and use the CLI.
+## Build configuration
 
-The included `netlify.toml` declares Node 24, `npm run build`, `dist` and cache headers. The CLI is a deployment tool, not an added application dependency; it has not been installed or authenticated during this sprint.
-Nothing automatically connects this repository to Netlify. Do not push, enable automatic builds or upload a release until the owner approves.
+| Setting | Required value |
+| --- | --- |
+| Application root | GitHub repository root (`.`), not `prototype/` |
+| Framework | Vite |
+| Node.js | 24.x |
+| Install | `npm ci` |
+| Build | `npm run build` |
+| Output | `dist` |
+| Release branch | `feature/phase-3-cinematic-projects` |
 
-## Release steps after approval
+`vercel.json` declares the framework, commands, output and static asset cache headers. Hashed `/assets/*` files are immutable for one year; stable `/media/*` URLs use a one-hour cache. HTML uses platform defaults. `.vercelignore` excludes local QA evidence, documentation, environment files and generated tooling/build directories from CLI source uploads. Git ignores `.vercel/` account/project linkage.
 
-1. After approval, authenticate with Netlify, create/select the intended project without connecting automatic Git builds, and record its assigned HTTPS hostname/custom domain.
-2. Set `VITE_SITE_URL` to that full public base URL, ending in `/`, and build. Example syntax: `VITE_SITE_URL="https://YOUR_APPROVED_HOST/" npm run build`. This is a placeholder, not a claimed live site. Run `npm run qa:assets`; retain the complete `dist` including media, assets, favicon, social image, robots and generated sitemap.
-3. Once public deployment is explicitly approved, run `netlify deploy --dir=dist --no-build --prod` from this checkout with the correct selected Netlify project. This uploads the prebuilt output and applies the prepared config without committing or pushing. These flags are documented in the [CLI deploy reference](https://cli.netlify.com/commands/deploy/). No such command has been executed here.
-4. Verify the public root and `#contact`, `#skills`, `#showreel` and `#additional-projects` fragments; test native film playback, audio handoff and actual email-app/profile link activation. Confirm MIME types, MP4 byte-range delivery, canonical/OG image URLs, robots and sitemap on the real host.
+This is a static frontend with no server, database, API keys or Vercel Functions. All navigation uses document fragments such as `/#contact`; there are no History API page routes. Refreshing a fragment requests `/`, so no catch-all rewrite is needed. In particular, missing MP4, GLB or image URLs should return 404 rather than `index.html`. See [Vercel's Vite guide](https://vercel.com/docs/frameworks/frontend/vite).
 
-The build plugin emits the canonical URL, `og:url`, absolute OG/Twitter image URL and a **one-URL sitemap** only when `VITE_SITE_URL` is set. Until the actual hostname is known, the local build deliberately omits an invented canonical/sitemap and uses a local social-image path. Fragment IDs are not separate sitemap pages. No social account handles are fabricated.
+## Production hostname and metadata
 
-## Asset base and routing
+`VITE_SITE_URL` is intentionally blank in `.env.example`. The actual production hostname has not been supplied or verified. Do not derive one from the repository name or a preview URL.
 
-Default deployment is at the domain root. Every runtime media URL uses the small `assetUrl` helper and Vite's `BASE_URL`. For a subfolder host, use `npm run build -- --base=/YOUR_FOLDER/` and set `VITE_SITE_URL` to the same complete public subfolder URL. Vite documents this under [public base paths](https://vite.dev/guide/build#public-base-path).
+After selecting the Vercel project and confirming its assigned production domain or the owner's custom domain, set **Production → `VITE_SITE_URL`** to its complete HTTPS base URL ending in `/`. It is public build-time configuration, not a credential. It controls:
 
-A real production build mounted at `/portfolio/` was exercised locally, including WebGL, images, fonts, hero sound, commercial playback, Contact fragment refresh, canonical metadata, robots and sitemap. [Deployment checks](../qa/launch/deployment-results.json).
+- The canonical link and `og:url`.
+- Absolute Open Graph/Twitter image URLs.
+- The robots sitemap reference and a sitemap containing the single document URL.
 
-There are no History API page routes to rewrite: all navigation stays within one document using `#section` fragments. Do not add a catch-all rewrite that returns HTML for missing model/image/video files. Normal missing-file 404s are preserved; refresh at an existing fragment requests the document root correctly.
+The site remains usable without this value, but final production metadata requires it. Environment changes require a new build/deployment. Preview deployments must not replace the confirmed production hostname in production metadata. Keep the root Vite base `/` for this Vercel deployment.
 
-Hashed `/assets/*` files receive immutable caching in the supplied Netlify config. Stable-name `/media/*` files use a one-hour cache. All original media files are unchanged.
+## Media and size readiness
 
-## Contact and public links
+Measured production output: **54,106,844 bytes across 52 files**, including all **43 checksum-verified runtime assets**. Documentation screenshots are outside `public` and are not copied into `dist`.
 
-Owner-approved email: `mailto:bysahilworks@gmail.com`. This invokes the visitor's configured mail application; there is no server mail handler or fake form. No test message was sent and mailbox delivery is not claimed as tested.
+| Asset | Bytes | Delivery |
+| --- | ---: | --- |
+| Laptop-screen animation | 23,462,114 | Static MP4; unchanged 29.5-second original |
+| Original laptop model | 10,847,304 | Static GLB |
+| Optional hero soundtrack | 8,640,044 | Static WAV; loaded on visitor activation |
+| Commercial showreel | 5,747,083 | Static MP4; 41 seconds, 1920×1080, H.264/AAC |
 
-- **Hire Me on Upwork** → exact approved profile `https://www.upwork.com/freelancers/~015b6e376493c182fd`.
-- **View Fiverr Services** → exact approved short link `https://www.fiverr.com/s/jyyw1vG`, verified redirect to the `bysahilwork` website-development service.
-- **Explore My GitHub** → `https://github.com/sahilbhardwaj037037-sys`.
+The commercial is byte-identical to the approved original, with SHA-256 `a7efe982dec837b957ba342b68a850a79a651c442d8a2b286e1b30ecaccf8b15`. It uses native inline playback, `preload="none"`, an on-demand source, a poster and a transcript. No recompression or external video host is required for size compliance.
 
-All external profile links use `target="_blank" rel="noopener noreferrer"`. HTTP verification results are recorded in [external links](../qa/launch/external-links.json). Upwork returned a Cloudflare challenge to automated requests, so the intended profile's public contents still need a normal-browser manual check. The owner-approved URL is preserved; a challenge is not evidence of a broken profile.
+[Vercel's documented limits](https://vercel.com/docs/limits#static-file-uploads) allow CLI source uploads of 100 MB on Hobby and 1 GB on Pro. The tracked source is approximately 54 MB with curated documentation images; the 54.11 MB output is also below 100 MB. These are CLI source-upload limits, not a per-request Function payload limit. Media is served as static files, without passing through Functions. Traffic and transfer usage still depend on the selected account and visitor behavior. [Node.js 24 is supported](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions).
 
-ApexFit remains the only public **Live Website** project action. Its URL and the existing repositories returned HTTP 200. SIX&7 redirects to `/password` and is explicitly labeled password-protected; no password was entered or bypassed. No other project received a new live action.
+## Exact publishing sequence — only after deployment approval
 
-## Approval and platform limits
+The manual CLI path avoids accidentally deploying `main` through a new Git import. None of these release commands has been executed during preparation.
 
-No code commit, push, pull request, merge or deployment has been performed. The final public hostname, release authorization and the Upwork normal-browser check remain release-time decisions. Local Chrome/touch-emulation evidence does not certify Safari/iOS; earlier review documented disabled Safari remote automation.
+1. In this checkout, confirm a clean working tree on `feature/phase-3-cinematic-projects` and the final pushed commit. Run `npm ci`, `npm run build` and `npm run qa:assets`.
+2. Run `npx vercel login`, then `npx vercel link` from the repository root. Select the intended account and link/create the correct project. Linking alone does not publish the application. Do not run the deployment command yet.
+3. In the linked project's Vercel settings, confirm Vite, repository root, `npm ci`, `npm run build`, `dist` and Node.js 24.x. Confirm the intended production domain; configure the owner's custom domain if applicable.
+4. Run `npx vercel env add VITE_SITE_URL production` and enter the confirmed complete HTTPS base URL. Alternatively set it in the project's Environment Variables settings. Do not use an invented hostname.
+5. When the owner authorizes public publication, run **`npx vercel --prod`** from the clean release checkout. This uploads source and performs the configured production build with the Production environment. It is the step that deploys the site.
+6. Verify the returned production deployment and its actual public hostname. Check the root and fragment refreshes for Projects, Additional Work, Showreel, Skills, About and Contact. Test navigation, mobile swiping, reduced motion, film playback/seeking and the hero sound/film handoff.
+7. Check media MIME types and MP4 `Range` responses on the actual host; confirm missing media returns 404. Verify canonical/OG URLs, the social image, `robots.txt` and `sitemap.xml` reference the confirmed hostname.
+8. Only after public verification, add the real production URL to the README and GitHub repository website field. If Git-based deployments are enabled later, explicitly choose `feature/phase-3-cinematic-projects` as the production branch; future pushes can then trigger deployments. No merge into `main` is required.
+
+## Contact, scope and release-time checks
+
+Email uses `mailto:bysahilworks@gmail.com`; no fake form or server mail delivery is claimed. Professional profiles retain the exact approved URLs and `target="_blank" rel="noopener noreferrer"` in the application. The final automated check returned HTTP 403 for both Upwork and Fiverr; verify those exact approved destinations in a normal browser before release. Their public profile contents are not claimed as verified. GitHub, the project repositories and ApexFit returned HTTP 200; SIX&7 redirected to its password page. Mailto activation is checked locally without sending an email.
+
+ApexFit is the only public project “Live Website” action. SIX&7 remains explicitly password-protected; no password is entered or bypassed. Other projects expose source links and retain their practice/concept/development disclosures.
+
+The pending release inputs are the owner's Vercel account/project and confirmed production hostname. Public CDN delivery, DNS, metadata and account-specific quotas can only be fully verified after deployment approval. Local Chrome and touch-emulation checks do not certify physical iOS/Safari. Asset provenance and reuse boundaries remain documented in `licenses/`; no new rights are asserted.

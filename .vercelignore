@@ -1,0 +1,10 @@
+# Production is built from source. Keep local evidence and tooling off uploads.
+qa/
+docs/
+node_modules/
+dist/
+.git/
+.netlify/
+.env*
+*.log
+*.tsbuildinfo

@@ -88,3 +88,6 @@
 .collection-static .collection-image img,.collection-static .collection-links a>span{transition:none}
 .collection-navigation button{min-width:44px}
 @media(max-width:360px){.collection-navigation{grid-template-columns:1fr}.collection-navigation>p{grid-column:auto}.collection-arrows{justify-content:end}}
+
+/* Keep the collection identifiers and gesture hint readable on small screens. */
+@media(max-width:999px){.collection-eyebrow,.collection-card-rail{font-size:8px}.collection-navigation>p{font-size:10px}}

@@ -62,3 +62,6 @@ recordings/
 
 # Local Netlify authentication/project state; deployment config is tracked separately.
 .netlify/
+
+# Local Vercel project/account linkage is not portable source.
+.vercel/
